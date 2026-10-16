@@ -27,8 +27,17 @@ from eoap_problems_registry.fastapi import ProblemRegistryException
 
 class ProblemRegistryExceptionTest(unittest.TestCase):
     def setUp(self) -> None:
+        self.request = Request(
+            {
+                "type": "http",
+                "scheme": "https",
+                "server": ("example.com", 443),
+                "path": "/instances/sample",
+                "headers": [],
+            }
+        )
         self.problem = registry.MissingRequestParameter(
-            instance="/instances/sample",
+            instance="/instances/previous",
             code="400-03",
             errors=[
                 registry.ErrorDetail(
@@ -38,7 +47,7 @@ class ProblemRegistryExceptionTest(unittest.TestCase):
             ],
         )
 
-        self.exception = ProblemRegistryException(problem=self.problem)
+        self.exception = ProblemRegistryException(request=self.request, problem=self.problem)
 
     def test_is_an_http_exception_with_the_problem_status(self) -> None:
         self.assertIsInstance(self.exception, HTTPException)
@@ -51,6 +60,19 @@ class ProblemRegistryExceptionTest(unittest.TestCase):
             self.problem.model_dump(mode="json", exclude_none=True),
         )
 
+    def test_request_url_replaces_the_existing_problem_instance(self) -> None:
+        self.assertEqual(self.problem.instance, "https://example.com/instances/sample")
+        self.assertEqual(
+            json.loads(self.exception.detail)["instance"], "https://example.com/instances/sample"
+        )
+
+    def test_request_url_sets_an_unset_problem_instance(self) -> None:
+        exception = ProblemRegistryException(request=self.request, problem=registry.BadRequest())
+
+        self.assertEqual(
+            json.loads(exception.detail)["instance"], "https://example.com/instances/sample"
+        )
+
     def test_uses_the_problem_json_content_type(self) -> None:
         self.assertEqual(
             self.exception.headers,
@@ -59,15 +81,15 @@ class ProblemRegistryExceptionTest(unittest.TestCase):
 
     def test_handler_returns_problem_json_with_custom_headers(self) -> None:
         exception = fastapi_registry.MissingRequestParameterException(
-            instance="/instances/sample", headers={"X-Request-ID": "abc123"}
+            request=self.request, headers={"X-Request-ID": "abc123"}
         )
         response = asyncio.run(
-            fastapi_registry.problem_registry_exception_handler(
-                Request({"type": "http"}), exception
-            )
+            fastapi_registry.problem_registry_exception_handler(self.request, exception)
         )
 
-        self.assertEqual(json.loads(bytes(response.body))["instance"], "/instances/sample")
+        self.assertEqual(
+            json.loads(bytes(response.body))["instance"], "https://example.com/instances/sample"
+        )
         self.assertEqual(response.status_code, exception.status_code)
         self.assertEqual(bytes(response.body).decode(), exception.detail)
         self.assertEqual(response.headers["content-type"], "application/problem+json")
@@ -109,6 +131,17 @@ class DeclaredProblemRegistryExceptionsTest(unittest.TestCase):
         fastapi_registry.ValidationErrorException,
     )
 
+    def setUp(self) -> None:
+        self.request = Request(
+            {
+                "type": "http",
+                "scheme": "https",
+                "server": ("example.com", 443),
+                "path": "/instances/sample",
+                "headers": [],
+            }
+        )
+
     def test_each_declared_exception_reflects_its_related_problem_model(self) -> None:
         declared_types = {
             exception_type
@@ -125,8 +158,8 @@ class DeclaredProblemRegistryExceptionsTest(unittest.TestCase):
                 problem_model_name = exception_type.__name__.removesuffix("Exception")
                 problem_model_type = getattr(registry, problem_model_name)
 
-                problem = problem_model_type(instance="/instances/sample")
-                exception = exception_type(instance="/instances/sample")
+                problem = problem_model_type(instance="https://example.com/instances/sample")
+                exception = exception_type(request=self.request)
 
                 self.assertIsInstance(exception, HTTPException)
                 self.assertEqual(exception.status_code, problem.status)
@@ -139,15 +172,51 @@ class DeclaredProblemRegistryExceptionsTest(unittest.TestCase):
                     {"Content-Type": "application/problem+json"},
                 )
 
-    def test_each_thrown_exception_preserves_instance(self) -> None:
-        instance = "/instances/sample"
-
+    def test_each_thrown_exception_uses_the_request_url(self) -> None:
         for exception_type in self.exception_types:
             with self.subTest(exception=exception_type.__name__):
                 with self.assertRaises(exception_type) as raised:
-                    raise exception_type(instance=instance)
+                    raise exception_type(request=self.request)
 
-                self.assertEqual(json.loads(raised.exception.detail)["instance"], instance)
+                self.assertEqual(
+                    json.loads(raised.exception.detail)["instance"],
+                    "https://example.com/instances/sample",
+                )
+
+    def test_each_declared_exception_preserves_the_request_url_without_query(self) -> None:
+        cases = (
+            ("https", 443, "/", b"", "https://example.com/"),
+            (
+                "https",
+                8443,
+                "/collections/sample/items/",
+                b"limit=10&offset=20",
+                "https://example.com:8443/collections/sample/items/",
+            ),
+            (
+                "http",
+                80,
+                "/search",
+                b"q=hello%20world&tag=a&tag=b",
+                "http://example.com/search",
+            ),
+        )
+        for scheme, port, path, query_string, expected_instance in cases:
+            request = Request(
+                {
+                    "type": "http",
+                    "headers": [],
+                    "scheme": scheme,
+                    "server": ("example.com", port),
+                    "path": path,
+                    "query_string": query_string,
+                }
+            )
+            for exception_type in self.exception_types:
+                with self.subTest(exception=exception_type.__name__, url=expected_instance):
+                    exception = exception_type(request=request)
+
+                    self.assertEqual(json.loads(exception.detail)["instance"], expected_instance)
 
     def test_each_declared_exception_sets_a_single_error(self) -> None:
         error = registry.ErrorDetail(
@@ -158,10 +227,10 @@ class DeclaredProblemRegistryExceptionsTest(unittest.TestCase):
 
         for exception_type in self.exception_types:
             with self.subTest(exception=exception_type.__name__):
-                exception = exception_type(instance="/instances/sample", errors=error)
+                exception = exception_type(request=self.request, errors=error)
                 detail = json.loads(exception.detail)
 
-                self.assertEqual(detail["instance"], "/instances/sample")
+                self.assertEqual(detail["instance"], "https://example.com/instances/sample")
                 self.assertEqual(detail["errors"], expected_errors)
 
     def test_each_declared_exception_sets_multiple_errors(self) -> None:
@@ -179,10 +248,10 @@ class DeclaredProblemRegistryExceptionsTest(unittest.TestCase):
 
         for exception_type in self.exception_types:
             with self.subTest(exception=exception_type.__name__):
-                exception = exception_type(instance="/instances/sample", errors=errors)
+                exception = exception_type(request=self.request, errors=errors)
                 detail = json.loads(exception.detail)
 
-                self.assertEqual(detail["instance"], "/instances/sample")
+                self.assertEqual(detail["instance"], "https://example.com/instances/sample")
                 self.assertEqual(detail["errors"], expected_errors)
 
     def test_each_declared_exception_merges_custom_headers(self) -> None:
@@ -193,9 +262,11 @@ class DeclaredProblemRegistryExceptionsTest(unittest.TestCase):
 
         for exception_type in self.exception_types:
             with self.subTest(exception=exception_type.__name__):
-                exception = exception_type(instance="/instances/sample", headers=headers)
+                exception = exception_type(request=self.request, headers=headers)
 
-                self.assertEqual(json.loads(exception.detail)["instance"], "/instances/sample")
+                self.assertEqual(
+                    json.loads(exception.detail)["instance"], "https://example.com/instances/sample"
+                )
 
                 self.assertEqual(
                     exception.headers,

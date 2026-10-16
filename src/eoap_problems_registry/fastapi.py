@@ -67,6 +67,7 @@ class ProblemRegistryException(HTTPException):
     def __init__(
         self,
         *,
+        request: Request,
         problem: AlreadyExists
         | BadRequest
         | BusinessRuleViolation
@@ -101,6 +102,7 @@ class ProblemRegistryException(HTTPException):
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
+        problem.instance = str(request.url.replace(query=""))
         self.status_code = problem.status
 
         if errors:
@@ -118,11 +120,11 @@ class ProblemRegistryException(HTTPException):
 class AlreadyExistsException(ProblemRegistryException):
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
-        super().__init__(problem=AlreadyExists(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=AlreadyExists(), errors=errors, headers=headers)
 
 
 class BadRequestException(ProblemRegistryException):
@@ -130,7 +132,7 @@ class BadRequestException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -139,7 +141,7 @@ class BadRequestException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=BadRequest(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=BadRequest(), errors=errors, headers=headers)
 
 
 class BusinessRuleViolationException(ProblemRegistryException):
@@ -147,7 +149,7 @@ class BusinessRuleViolationException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -157,7 +159,7 @@ class BusinessRuleViolationException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=BusinessRuleViolation(instance=instance), errors=errors, headers=headers
+            request=request, problem=BusinessRuleViolation(), errors=errors, headers=headers
         )
 
 
@@ -166,7 +168,7 @@ class ConflictException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -175,7 +177,7 @@ class ConflictException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=Conflict(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=Conflict(), errors=errors, headers=headers)
 
 
 class FailedDependencyException(ProblemRegistryException):
@@ -183,7 +185,7 @@ class FailedDependencyException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -193,7 +195,7 @@ class FailedDependencyException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=FailedDependency(instance=instance), errors=errors, headers=headers
+            request=request, problem=FailedDependency(), errors=errors, headers=headers
         )
 
 
@@ -202,7 +204,7 @@ class ForbiddenException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -211,7 +213,7 @@ class ForbiddenException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=Forbidden(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=Forbidden(), errors=errors, headers=headers)
 
 
 class GoneException(ProblemRegistryException):
@@ -219,7 +221,7 @@ class GoneException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -228,7 +230,7 @@ class GoneException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=Gone(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=Gone(), errors=errors, headers=headers)
 
 
 class InsufficientStorageException(ProblemRegistryException):
@@ -236,7 +238,7 @@ class InsufficientStorageException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -246,7 +248,7 @@ class InsufficientStorageException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InsufficientStorage(instance=instance), errors=errors, headers=headers
+            request=request, problem=InsufficientStorage(), errors=errors, headers=headers
         )
 
 
@@ -255,7 +257,7 @@ class InvalidBodyPropertyFormatException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -265,7 +267,7 @@ class InvalidBodyPropertyFormatException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidBodyPropertyFormat(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidBodyPropertyFormat(), errors=errors, headers=headers
         )
 
 
@@ -274,7 +276,7 @@ class InvalidBodyPropertyValueException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -284,7 +286,7 @@ class InvalidBodyPropertyValueException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidBodyPropertyValue(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidBodyPropertyValue(), errors=errors, headers=headers
         )
 
 
@@ -293,7 +295,7 @@ class InvalidParametersException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -303,7 +305,7 @@ class InvalidParametersException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidParameters(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidParameters(), errors=errors, headers=headers
         )
 
 
@@ -312,7 +314,7 @@ class InvalidRequestHeaderFormatException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -322,7 +324,7 @@ class InvalidRequestHeaderFormatException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidRequestHeaderFormat(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidRequestHeaderFormat(), errors=errors, headers=headers
         )
 
 
@@ -331,7 +333,7 @@ class InvalidRequestParameterFormatException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -341,7 +343,7 @@ class InvalidRequestParameterFormatException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidRequestParameterFormat(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidRequestParameterFormat(), errors=errors, headers=headers
         )
 
 
@@ -350,7 +352,7 @@ class InvalidRequestParameterValueException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -360,7 +362,7 @@ class InvalidRequestParameterValueException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidRequestParameterValue(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidRequestParameterValue(), errors=errors, headers=headers
         )
 
 
@@ -369,7 +371,7 @@ class InvalidStateTransitionException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -379,7 +381,7 @@ class InvalidStateTransitionException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=InvalidStateTransition(instance=instance), errors=errors, headers=headers
+            request=request, problem=InvalidStateTransition(), errors=errors, headers=headers
         )
 
 
@@ -388,7 +390,7 @@ class LicenseCancelledException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -398,7 +400,7 @@ class LicenseCancelledException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=LicenseCancelled(instance=instance), errors=errors, headers=headers
+            request=request, problem=LicenseCancelled(), errors=errors, headers=headers
         )
 
 
@@ -407,7 +409,7 @@ class LicenseExpiredException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -416,7 +418,7 @@ class LicenseExpiredException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=LicenseExpired(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=LicenseExpired(), errors=errors, headers=headers)
 
 
 class MissingBodyPropertyException(ProblemRegistryException):
@@ -424,7 +426,7 @@ class MissingBodyPropertyException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -434,7 +436,7 @@ class MissingBodyPropertyException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=MissingBodyProperty(instance=instance), errors=errors, headers=headers
+            request=request, problem=MissingBodyProperty(), errors=errors, headers=headers
         )
 
 
@@ -443,7 +445,7 @@ class MissingRequestHeaderException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -453,7 +455,7 @@ class MissingRequestHeaderException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=MissingRequestHeader(instance=instance), errors=errors, headers=headers
+            request=request, problem=MissingRequestHeader(), errors=errors, headers=headers
         )
 
 
@@ -462,7 +464,7 @@ class MissingRequestParameterException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -472,7 +474,7 @@ class MissingRequestParameterException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=MissingRequestParameter(instance=instance), errors=errors, headers=headers
+            request=request, problem=MissingRequestParameter(), errors=errors, headers=headers
         )
 
 
@@ -481,7 +483,7 @@ class MethodNotAllowedException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -491,7 +493,7 @@ class MethodNotAllowedException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=MethodNotAllowed(instance=instance), errors=errors, headers=headers
+            request=request, problem=MethodNotAllowed(), errors=errors, headers=headers
         )
 
 
@@ -500,7 +502,7 @@ class NotAcceptableException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -509,7 +511,7 @@ class NotAcceptableException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=NotAcceptable(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=NotAcceptable(), errors=errors, headers=headers)
 
 
 class NotFoundException(ProblemRegistryException):
@@ -517,7 +519,7 @@ class NotFoundException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -526,7 +528,7 @@ class NotFoundException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=NotFound(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=NotFound(), errors=errors, headers=headers)
 
 
 class NotImplementedException(ProblemRegistryException):
@@ -534,7 +536,7 @@ class NotImplementedException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -543,7 +545,7 @@ class NotImplementedException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=NotImplemented(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=NotImplemented(), errors=errors, headers=headers)
 
 
 class RequestTimeoutException(ProblemRegistryException):
@@ -551,7 +553,7 @@ class RequestTimeoutException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -560,7 +562,7 @@ class RequestTimeoutException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=RequestTimeout(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=RequestTimeout(), errors=errors, headers=headers)
 
 
 class ServerErrorException(ProblemRegistryException):
@@ -568,7 +570,7 @@ class ServerErrorException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -577,7 +579,7 @@ class ServerErrorException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=ServerError(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=ServerError(), errors=errors, headers=headers)
 
 
 class ServiceUnavailableException(ProblemRegistryException):
@@ -585,7 +587,7 @@ class ServiceUnavailableException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -595,7 +597,7 @@ class ServiceUnavailableException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=ServiceUnavailable(instance=instance), errors=errors, headers=headers
+            request=request, problem=ServiceUnavailable(), errors=errors, headers=headers
         )
 
 
@@ -604,7 +606,7 @@ class UnauthorizedException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -613,7 +615,7 @@ class UnauthorizedException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=Unauthorized(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=Unauthorized(), errors=errors, headers=headers)
 
 
 class UnavailableForLegalReasonsException(ProblemRegistryException):
@@ -621,7 +623,7 @@ class UnavailableForLegalReasonsException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -631,7 +633,7 @@ class UnavailableForLegalReasonsException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=UnavailableForLegalReasons(instance=instance), errors=errors, headers=headers
+            request=request, problem=UnavailableForLegalReasons(), errors=errors, headers=headers
         )
 
 
@@ -640,7 +642,7 @@ class UnprocessableContentException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -650,7 +652,7 @@ class UnprocessableContentException(ProblemRegistryException):
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
         super().__init__(
-            problem=UnprocessableContent(instance=instance), errors=errors, headers=headers
+            request=request, problem=UnprocessableContent(), errors=errors, headers=headers
         )
 
 
@@ -659,7 +661,7 @@ class ValidationErrorException(ProblemRegistryException):
 
     def __init__(
         self,
-        instance: str | None,
+        request: Request,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:
@@ -668,7 +670,7 @@ class ValidationErrorException(ProblemRegistryException):
         Args:
             instance: URI reference identifying this occurrence, or ``None`` to omit it.
         """
-        super().__init__(problem=ValidationError(instance=instance), errors=errors, headers=headers)
+        super().__init__(request=request, problem=ValidationError(), errors=errors, headers=headers)
 
 
 async def problem_registry_exception_handler(
