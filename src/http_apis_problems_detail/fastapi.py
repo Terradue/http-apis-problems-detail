@@ -60,7 +60,9 @@ if TYPE_CHECKING:
     from fastapi.requests import Request
 
 
-_PROBLEM_JSON_CONTENT_TYPE_: str = "Content-Type"
+_CONTENT_TYPE_HEADER_: str = "Content-Type"
+
+_PROBLEM_JSON_CONTENT_TYPE_: str = "application/problem+json"
 
 
 class ProblemRegistryException(HTTPException):
@@ -113,7 +115,7 @@ class ProblemRegistryException(HTTPException):
         self.detail = problem.model_dump_json(exclude_none=True)
 
         headers = (headers or {}).copy()
-        headers[_PROBLEM_JSON_CONTENT_TYPE_] = "application/problem+json"
+        headers[_CONTENT_TYPE_HEADER_] = _PROBLEM_JSON_CONTENT_TYPE_
         self.headers = headers
 
 
@@ -681,6 +683,6 @@ async def problem_registry_exception_handler(
     return Response(
         status_code=exc.status_code,
         content=exc.detail,
-        media_type="application/problem+json",
+        media_type=_PROBLEM_JSON_CONTENT_TYPE_,
         headers=exc.headers,
     )
