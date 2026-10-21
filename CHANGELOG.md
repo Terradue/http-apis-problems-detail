@@ -7,11 +7,105 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-10-21
+## [2.0.0] - 2026-10-21
+
+### Changed
+
+- Project moved from `eoap` to `terradue` organization
+
+- **Breaking:** Project rebranded as `http-apis-problems-detail` - same classes are now declared under the `http_apis_problems_detail` module
+
+### Added
+
+- The `http_apis_problems_detail.fastapi.PROBLEM_RESPONSES` dictionary simplifies FastAPI methods annotations
+
+## [1.8.0] - 2026-10-16
+
+### Changed
+
+- When throwing an error, simplified the `instance` interpolation from the original `Request`
+
+## [1.7.0] - 2026-10-02
+
+### Added
+
+- Added `instance` filed to throw excpetions
+  
+
+## [1.6.0] - 2026-10-02
+
+### Added
+
+- Added a Problem Registry exception handler to be reused in all context
+
+
+
+### Changed
+
+- Improved type annotations and internal code quality by addressing mypy, Ruff, and Bandit findings.
+
+## [1.5.0] - 2026-08-05
+
+### Added
+
+- Enhanced `FastAPI` integration with introducing facility exceptions to reduce boilerplate code.
+- Added `headers` support in `FastAPI` exceptions, when needing to send auxiliary HTTP headers i.e. `Retry-After`
+
+## [1.4.0] - 2026-08-05
+
+### Fixed
+
+- `FastAPI` integration did not support the `InvalidStateTransition`.
+
+## [1.3.0] - 2026-07-30
+
+### Changed
+
+- Stronger code chekers with Ruff+McCabe & Bandit
+
+## [1.2.0] - 2026-07-26
+
+### Added
+
+- New _Common Problem_ details and reponses:
+  - `405` Method Not Allowed
+  - `406` Not Acceptable
+  - `408` Request Timeout
+  - `409` Conflict
+  - `422` Unprocessable Content
+  - `424` Failed Dependency
+  - `451` Unavailable For Legal Reasons
+  - `501` Not Implemented
+  - `507` Insufficient
+- [FastAPI](https://fastapi.tiangolo.com/) integration.
+
+## [1.1.0] - 2026-07-23
+
+### Added
+
+- `Gone` as new problem detail and reponse.
+
+## [1.0.1] - 2026-07-20
+
+### Fixed
+
+- Generated models solve Pydantic/Pylance [issue](https://github.com/pydantic/pydantic/discussions/7379)
+
+## [1.0.0] - 2026-07-17
 
 ### Added
 
 - Initial version
 
-[Unreleased]: https://github.com/terradue/http-apis-problems-detail/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/terradue/http-apis-problems-detail/releases/tag/v1.0.0
+[Unreleased]: https://github.com/Terradue/http-apis-problems-detail/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.8.0...v2.0.0
+[1.8.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.7.0...v1.8.0
+[1.7.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.6.0...v1.7.0
+[1.6.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.5.0...v1.6.0
+[1.5.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.4.0...v1.5.0
+[1.4.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/Terradue/http-apis-problems-detail/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/Terradue/http-apis-problems-detail/releases/tag/v1.0.0
