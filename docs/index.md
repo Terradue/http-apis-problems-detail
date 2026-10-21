@@ -108,7 +108,7 @@ Register an exception handler that returns the problem detail as the response bo
 ```python
 from fastapi import FastAPI, Request, status as http_status
 
-from http_apis_problems_detail import 
+from http_apis_problems_detail import ErrorDetail
 from http_apis_problems_detail.fastapi import (
     PROBLEM_RESPONSES,
     ProblemRegistryException,
@@ -136,7 +136,7 @@ The example works as follows:
 
 1. **Import the integration helpers.** `PROBLEM_RESPONSES` maps HTTP status codes to response model definitions that FastAPI can include in its OpenAPI document. `NotFoundException` represents the registered Not Found problem, while `ProblemRegistryException` is the common base class for the registry exceptions.
 2. **Register the exception handler.** `app.add_exception_handler(...)` installs `problem_registry_exception_handler` for the base exception and its subclasses. The handler sends the serialized problem directly as the response body, using the problem's HTTP status and the `application/problem+json` content type.
-3. **Document the route's error response.** The `responses` argument selects the HTTP 404 entry from `PROBLEM_RESPONSES`, so FastAPI documents the `NotFound` model for this route. This declaration describes the response in OpenAPI; raising the exception produces the response at runtime. For status codes shared by multiple problem types, the mapping contains a union of those models.
+3. **Document the route's error response.** The `responses` argument selects the HTTP 404 entry from `PROBLEM_RESPONSES`, so FastAPI documents the `NotFound` schema under `application/problem+json`. Each entry contains a schema generated from the registered models, with nested schemas included directly, so no custom OpenAPI handler is needed. This declaration describes the response in OpenAPI; raising the exception produces the response at runtime. For status codes shared by multiple problem types, the schema lists those alternatives using `anyOf`.
 4. **Use the incoming request to identify the occurrence.** FastAPI supplies `resource_id` from the path and injects the current `Request`. Passing `request=request` lets the exception set the problem's `instance` to the request URL, with the query string removed.
 5. **Raise the registered problem.** `NotFoundException` supplies the registered `type`, `status`, `title`, and `detail` fields. This minimal example always raises HTTP 404; in an application, raise it when the resource lookup fails and return the resource when it succeeds.
 
