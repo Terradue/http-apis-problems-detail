@@ -97,47 +97,47 @@ The resulting payload includes the registered `type`, `status`, `title`, and `de
 
 ### FastAPI Integration
 
-The optional [FastAPI](https://fastapi.tiangolo.com/) integration requires Python 3.10 or newer. Install it with the `fastapi` extra:
+The [FastAPI](https://fastapi.tiangolo.com/) integration requires Python 3.10 or newer. FastAPI is included as a package dependency:
 
 ```bash
-pip install "eoap-problems-registry[fastapi]"
+pip install http-apis-problems-detail
 ```
 
-Register an exception handler that returns the problem detail as the response body, then raise `ProblemRegistryException` from a route:
+Register an exception handler that returns the problem detail as the response body, then raise a `ProblemRegistryException` subclass from a route:
 
 ```python
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status as http_status
 
-import eoap_problems_registry as registry
-from eoap_problems_registry.fastapi import (
+from http_apis_problems_detail import 
+from http_apis_problems_detail.fastapi import (
+    PROBLEM_RESPONSES,
     ProblemRegistryException,
+    NotFoundException,
     problem_registry_exception_handler,
 )
 
 app = FastAPI()
 app.add_exception_handler(ProblemRegistryException, problem_registry_exception_handler)
 
-
-@app.get("/resources/{resource_id}")
-async def get_resource(resource_id: str) -> dict[str, str]:
-    raise ProblemRegistryException(
-        problem=registry.NotFound(
-            instance=f"https://api.example.test/resources/{resource_id}",
-        )
-    )
-```
-
-To avoid constructing and wrapping `registry.NotFound` each time, use the
-`NotFoundException` shortcut. With the same app and exception handler, replace
-the route above with:
-
-```python
-from eoap_problems_registry.fastapi import NotFoundException
-
-
-@app.get("/resources/{resource_id}")
-async def get_resource(resource_id: str) -> dict[str, str]:
+@app.get(
+    "/resources/{resource_id}",
+    responses={
+        http_status.HTTP_404_NOT_FOUND: PROBLEM_RESPONSES[http_status.HTTP_404_NOT_FOUND]
+    },
+)
+async def get_resource(resource_id: str, request: Request) -> dict[str, str]:
     raise NotFoundException(
-        instance=f"https://api.example.test/resources/{resource_id}",
+        request=request,
+        errors=ErrorDetail(parameter="resource_id", detail=f"Resource '{resource_id}' was not found.")
     )
 ```
+
+The example works as follows:
+
+1. **Import the integration helpers.** `PROBLEM_RESPONSES` maps HTTP status codes to response model definitions that FastAPI can include in its OpenAPI document. `NotFoundException` represents the registered Not Found problem, while `ProblemRegistryException` is the common base class for the registry exceptions.
+2. **Register the exception handler.** `app.add_exception_handler(...)` installs `problem_registry_exception_handler` for the base exception and its subclasses. The handler sends the serialized problem directly as the response body, using the problem's HTTP status and the `application/problem+json` content type.
+3. **Document the route's error response.** The `responses` argument selects the HTTP 404 entry from `PROBLEM_RESPONSES`, so FastAPI documents the `NotFound` model for this route. This declaration describes the response in OpenAPI; raising the exception produces the response at runtime. For status codes shared by multiple problem types, the mapping contains a union of those models.
+4. **Use the incoming request to identify the occurrence.** FastAPI supplies `resource_id` from the path and injects the current `Request`. Passing `request=request` lets the exception set the problem's `instance` to the request URL, with the query string removed.
+5. **Raise the registered problem.** `NotFoundException` supplies the registered `type`, `status`, `title`, and `detail` fields. This minimal example always raises HTTP 404; in an application, raise it when the resource lookup fails and return the resource when it succeeds.
+
+To document every registered problem response on a route, pass `responses=PROBLEM_RESPONSES`. Select individual status entries, as above, when only those responses apply.
