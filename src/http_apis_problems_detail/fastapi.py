@@ -19,6 +19,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from fastapi import HTTPException
+from fastapi import status as http_status
 from fastapi.responses import Response
 
 from . import (
@@ -64,43 +65,88 @@ _CONTENT_TYPE_HEADER_: str = "Content-Type"
 
 _PROBLEM_JSON_CONTENT_TYPE_: str = "application/problem+json"
 
+ProblemType = (
+    AlreadyExists
+    | BadRequest
+    | BusinessRuleViolation
+    | Conflict
+    | FailedDependency
+    | Forbidden
+    | Gone
+    | InsufficientStorage
+    | InvalidBodyPropertyFormat
+    | InvalidBodyPropertyValue
+    | InvalidParameters
+    | InvalidRequestHeaderFormat
+    | InvalidRequestParameterFormat
+    | InvalidRequestParameterValue
+    | InvalidStateTransition
+    | LicenseCancelled
+    | LicenseExpired
+    | MissingBodyProperty
+    | MissingRequestHeader
+    | MissingRequestParameter
+    | MethodNotAllowed
+    | NotAcceptable
+    | NotFound
+    | NotImplemented
+    | RequestTimeout
+    | ServerError
+    | ServiceUnavailable
+    | Unauthorized
+    | UnavailableForLegalReasons
+    | UnprocessableContent
+    | ValidationError
+)
+
+
+# Pass this mapping to a FastAPI route decorator with responses=PROBLEM_RESPONSES.
+# Group models sharing a status so every problem remains represented in OpenAPI.
+PROBLEM_RESPONSES: dict[int | str, dict[str, object]] = {
+    http_status.HTTP_400_BAD_REQUEST: {
+        "model": (
+            BadRequest
+            | InvalidBodyPropertyFormat
+            | InvalidBodyPropertyValue
+            | InvalidParameters
+            | InvalidRequestHeaderFormat
+            | InvalidRequestParameterFormat
+            | InvalidRequestParameterValue
+            | MissingBodyProperty
+            | MissingRequestHeader
+            | MissingRequestParameter
+        ),
+    },
+    http_status.HTTP_401_UNAUTHORIZED: {"model": Unauthorized},
+    http_status.HTTP_403_FORBIDDEN: {"model": Forbidden},
+    http_status.HTTP_404_NOT_FOUND: {"model": NotFound},
+    http_status.HTTP_405_METHOD_NOT_ALLOWED: {"model": MethodNotAllowed},
+    http_status.HTTP_406_NOT_ACCEPTABLE: {"model": NotAcceptable},
+    http_status.HTTP_408_REQUEST_TIMEOUT: {"model": RequestTimeout},
+    http_status.HTTP_409_CONFLICT: {"model": AlreadyExists | Conflict},
+    http_status.HTTP_410_GONE: {"model": Gone},
+    http_status.HTTP_422_UNPROCESSABLE_CONTENT: {
+        "model": (
+            BusinessRuleViolation | InvalidStateTransition | UnprocessableContent | ValidationError
+        ),
+    },
+    http_status.HTTP_424_FAILED_DEPENDENCY: {"model": FailedDependency},
+    http_status.HTTP_451_UNAVAILABLE_FOR_LEGAL_REASONS: {"model": UnavailableForLegalReasons},
+    http_status.HTTP_500_INTERNAL_SERVER_ERROR: {"model": ServerError},
+    http_status.HTTP_501_NOT_IMPLEMENTED: {"model": NotImplemented},
+    http_status.HTTP_503_SERVICE_UNAVAILABLE: {
+        "model": LicenseCancelled | LicenseExpired | ServiceUnavailable,
+    },
+    http_status.HTTP_507_INSUFFICIENT_STORAGE: {"model": InsufficientStorage},
+}
+
 
 class ProblemRegistryException(HTTPException):
     def __init__(
         self,
         *,
         request: Request,
-        problem: AlreadyExists
-        | BadRequest
-        | BusinessRuleViolation
-        | Conflict
-        | FailedDependency
-        | Forbidden
-        | Gone
-        | InsufficientStorage
-        | InvalidBodyPropertyFormat
-        | InvalidBodyPropertyValue
-        | InvalidParameters
-        | InvalidRequestHeaderFormat
-        | InvalidRequestParameterFormat
-        | InvalidRequestParameterValue
-        | InvalidStateTransition
-        | LicenseCancelled
-        | LicenseExpired
-        | MissingBodyProperty
-        | MissingRequestHeader
-        | MissingRequestParameter
-        | MethodNotAllowed
-        | NotAcceptable
-        | NotFound
-        | NotImplemented
-        | RequestTimeout
-        | ServerError
-        | ServiceUnavailable
-        | Unauthorized
-        | UnavailableForLegalReasons
-        | UnprocessableContent
-        | ValidationError,
+        problem: ProblemType,
         errors: ErrorDetail | list[ErrorDetail] | None = None,
         headers: dict[str, str] | None = None,
     ) -> None:

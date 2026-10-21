@@ -16,13 +16,48 @@ import asyncio
 import inspect
 import json
 import unittest
+from typing import get_args
 
-from fastapi import HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.requests import Request
 
 import http_apis_problems_detail as registry
 import http_apis_problems_detail.fastapi as fastapi_registry
 from http_apis_problems_detail.fastapi import ProblemRegistryException
+
+
+class ProblemResponsesTest(unittest.TestCase):
+    def test_maps_every_problem_to_its_http_status(self) -> None:
+        mapped_models: set[type[registry.ProblemDetails]] = set()
+        for status_code, response in fastapi_registry.PROBLEM_RESPONSES.items():
+            response_model = response["model"]
+            model_types = get_args(response_model) or (response_model,)
+            for model_type in model_types:
+                with self.subTest(model=model_type):
+                    assert isinstance(model_type, type)
+                    assert issubclass(model_type, registry.ProblemDetails)
+                    self.assertEqual(model_type.model_fields["status"].default, status_code)
+                    self.assertNotIn(model_type, mapped_models)
+                    mapped_models.add(model_type)
+
+        self.assertEqual(mapped_models, set(get_args(fastapi_registry.ProblemType)))
+
+    def test_route_openapi_includes_all_problem_models(self) -> None:
+        app = FastAPI()
+
+        @app.get("/sample", responses=fastapi_registry.PROBLEM_RESPONSES)
+        def sample() -> str:
+            return "ok"
+
+        document = app.openapi()
+        responses = document["paths"]["/sample"]["get"]["responses"]
+        for model_type in get_args(fastapi_registry.ProblemType):
+            with self.subTest(model=model_type.__name__):
+                status_code = str(model_type.model_fields["status"].default)
+                schema = responses[status_code]["content"]["application/json"]["schema"]
+                alternatives = schema.get("anyOf", [schema])
+                self.assertIn({"$ref": f"#/components/schemas/{model_type.__name__}"}, alternatives)
+                self.assertIn(model_type.__name__, document["components"]["schemas"])
 
 
 class ProblemRegistryExceptionTest(unittest.TestCase):
