@@ -15,8 +15,8 @@
 site_name: Problems Registry
 site_url: https://terradue.github.io/http-apis-problems-detail/
 site_author: Fabrice Brito, Simone Tripodi
-repo_url: https://github.com/eoap/problems-registry/
-repo_name: eoap/problems-registry
+repo_url: https://github.com/terradue/http-apis-problems-detail/
+repo_name: terradue/http-apis-problems-detail
 
 theme:
   logo: imgs/icon-eoap.png
