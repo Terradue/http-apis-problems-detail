@@ -19,6 +19,7 @@ import unittest
 from typing import get_args
 
 from fastapi import FastAPI, HTTPException
+from fastapi.encoders import jsonable_encoder
 from fastapi.requests import Request
 
 import http_apis_problems_detail as registry
@@ -27,22 +28,7 @@ from http_apis_problems_detail.fastapi import ProblemRegistryException
 
 
 class ProblemResponsesTest(unittest.TestCase):
-    def test_maps_every_problem_to_its_http_status(self) -> None:
-        mapped_models: set[type[registry.ProblemDetails]] = set()
-        for status_code, response in fastapi_registry.PROBLEM_RESPONSES.items():
-            response_model = response["model"]
-            model_types = get_args(response_model) or (response_model,)
-            for model_type in model_types:
-                with self.subTest(model=model_type):
-                    assert isinstance(model_type, type)
-                    assert issubclass(model_type, registry.ProblemDetails)
-                    self.assertEqual(model_type.model_fields["status"].default, status_code)
-                    self.assertNotIn(model_type, mapped_models)
-                    mapped_models.add(model_type)
-
-        self.assertEqual(mapped_models, set(get_args(fastapi_registry.ProblemType)))
-
-    def test_route_openapi_includes_all_problem_models(self) -> None:
+    def test_route_openapi_includes_all_problem_schemas(self) -> None:
         app = FastAPI()
 
         @app.get("/sample", responses=fastapi_registry.PROBLEM_RESPONSES)
@@ -51,13 +37,50 @@ class ProblemResponsesTest(unittest.TestCase):
 
         document = app.openapi()
         responses = document["paths"]["/sample"]["get"]["responses"]
-        for model_type in get_args(fastapi_registry.ProblemType):
+        self.assertEqual(set(responses["200"]["content"]), {"application/json"})
+        expected_models = set(get_args(fastapi_registry.ProblemType))
+        documented_names = []
+        for status_code, response in responses.items():
+            if status_code == "200":
+                continue
+            self.assertEqual(set(response["content"]), {"application/problem+json"})
+            schema = response["content"]["application/problem+json"]["schema"]
+            for alternative in schema.get("anyOf", [schema]):
+                documented_names.append(alternative["title"])
+                self.assertEqual(alternative["properties"]["status"]["const"], int(status_code))
+        self.assertCountEqual(documented_names, [model.__name__ for model in expected_models])
+
+        for model_type in expected_models:
             with self.subTest(model=model_type.__name__):
                 status_code = str(model_type.model_fields["status"].default)
-                schema = responses[status_code]["content"]["application/json"]["schema"]
+                schema = responses[status_code]["content"]["application/problem+json"]["schema"]
                 alternatives = schema.get("anyOf", [schema])
-                self.assertIn({"$ref": f"#/components/schemas/{model_type.__name__}"}, alternatives)
-                self.assertIn(model_type.__name__, document["components"]["schemas"])
+                model_schema = next(
+                    item for item in alternatives if item["title"] == model_type.__name__
+                )
+                expected_schema = model_type.model_json_schema(mode="serialization")
+                definitions = expected_schema.pop("$defs")
+                error_schema = expected_schema["properties"]["errors"]["anyOf"][0]
+                error_schema["items"] = definitions["ErrorDetail"]
+                # FastAPI omits null-valued metadata when serializing OpenAPI.
+                self.assertEqual(model_schema, jsonable_encoder(expected_schema, exclude_none=True))
+                self.assertNotIn('"$ref"', json.dumps(model_schema))
+                self.assertNotIn('"$defs"', json.dumps(model_schema))
+
+    def test_selected_response_preserves_default_validation_response(self) -> None:
+        app = FastAPI()
+
+        @app.get("/sample/{resource_id}", responses={404: fastapi_registry.PROBLEM_RESPONSES[404]})
+        def sample(resource_id: int) -> int:
+            return resource_id
+
+        responses = app.openapi()["paths"]["/sample/{resource_id}"]["get"]["responses"]
+        self.assertEqual(set(responses["404"]["content"]), {"application/problem+json"})
+        self.assertEqual(set(responses["422"]["content"]), {"application/json"})
+        self.assertEqual(set(responses["200"]["content"]), {"application/json"})
+        problem_schema = responses["404"]["content"]["application/problem+json"]["schema"]
+        self.assertNotIn('"$ref"', json.dumps(problem_schema))
+        self.assertNotIn('"$defs"', json.dumps(problem_schema))
 
 
 class ProblemRegistryExceptionTest(unittest.TestCase):

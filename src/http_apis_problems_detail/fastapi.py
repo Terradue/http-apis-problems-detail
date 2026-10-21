@@ -16,10 +16,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, get_args
 
 from fastapi import HTTPException
-from fastapi import status as http_status
 from fastapi.responses import Response
 
 from . import (
@@ -48,6 +47,7 @@ from . import (
     NotAcceptable,
     NotFound,
     NotImplemented,
+    ProblemDetails,
     RequestTimeout,
     ServerError,
     ServiceUnavailable,
@@ -100,45 +100,64 @@ ProblemType = (
 )
 
 
-# Pass this mapping to a FastAPI route decorator with responses=PROBLEM_RESPONSES.
-# Group models sharing a status so every problem remains represented in OpenAPI.
-PROBLEM_RESPONSES: dict[int | str, dict[str, object]] = {
-    http_status.HTTP_400_BAD_REQUEST: {
-        "model": (
-            BadRequest
-            | InvalidBodyPropertyFormat
-            | InvalidBodyPropertyValue
-            | InvalidParameters
-            | InvalidRequestHeaderFormat
-            | InvalidRequestParameterFormat
-            | InvalidRequestParameterValue
-            | MissingBodyProperty
-            | MissingRequestHeader
-            | MissingRequestParameter
-        ),
-    },
-    http_status.HTTP_401_UNAUTHORIZED: {"model": Unauthorized},
-    http_status.HTTP_403_FORBIDDEN: {"model": Forbidden},
-    http_status.HTTP_404_NOT_FOUND: {"model": NotFound},
-    http_status.HTTP_405_METHOD_NOT_ALLOWED: {"model": MethodNotAllowed},
-    http_status.HTTP_406_NOT_ACCEPTABLE: {"model": NotAcceptable},
-    http_status.HTTP_408_REQUEST_TIMEOUT: {"model": RequestTimeout},
-    http_status.HTTP_409_CONFLICT: {"model": AlreadyExists | Conflict},
-    http_status.HTTP_410_GONE: {"model": Gone},
-    http_status.HTTP_422_UNPROCESSABLE_CONTENT: {
-        "model": (
-            BusinessRuleViolation | InvalidStateTransition | UnprocessableContent | ValidationError
-        ),
-    },
-    http_status.HTTP_424_FAILED_DEPENDENCY: {"model": FailedDependency},
-    http_status.HTTP_451_UNAVAILABLE_FOR_LEGAL_REASONS: {"model": UnavailableForLegalReasons},
-    http_status.HTTP_500_INTERNAL_SERVER_ERROR: {"model": ServerError},
-    http_status.HTTP_501_NOT_IMPLEMENTED: {"model": NotImplemented},
-    http_status.HTTP_503_SERVICE_UNAVAILABLE: {
-        "model": LicenseCancelled | LicenseExpired | ServiceUnavailable,
-    },
-    http_status.HTTP_507_INSUFFICIENT_STORAGE: {"model": InsufficientStorage},
-}
+def _inline_schema_references(
+    value: object,
+    definitions: dict[str, object],
+    references: frozenset[str] = frozenset(),
+) -> object:
+    """Inline generated local references so schemas can be embedded in OpenAPI.
+
+    Raises:
+        ValueError: If a reference is recursive or is not a local definition.
+    """
+    if isinstance(value, list):
+        return [_inline_schema_references(item, definitions, references) for item in value]
+    if not isinstance(value, dict):
+        return value
+    if "$ref" in value:
+        reference = value["$ref"]
+        if not isinstance(reference, str) or not reference.startswith("#/$defs/"):
+            raise ValueError(f"Unsupported schema reference: {reference!r}")
+        if reference in references:
+            raise ValueError(f"Recursive schema reference: {reference}")
+        definition = definitions[reference.removeprefix("#/$defs/")]
+        resolved = _inline_schema_references(definition, definitions, references | {reference})
+        if not isinstance(resolved, dict):
+            raise TypeError("A schema definition must be an object")
+        value = {**resolved, **{key: item for key, item in value.items() if key != "$ref"}}
+    return {
+        key: _inline_schema_references(item, definitions, references) for key, item in value.items()
+    }
+
+
+def _create_problem_responses() -> dict[int | str, dict[str, object]]:
+    """Generate self-contained response schemas grouped by registered HTTP status."""
+    schemas_by_status: dict[int, list[object]] = {}
+    for model_type in get_args(ProblemType):
+        if not isinstance(model_type, type) or not issubclass(model_type, ProblemDetails):
+            raise TypeError("ProblemType must contain problem model classes")
+        schema = model_type.model_json_schema(mode="serialization")
+        definitions = schema.pop("$defs", {})
+        resolved = _inline_schema_references(schema, definitions)
+        status_code = model_type.model_fields["status"].default
+        if not isinstance(status_code, int):
+            raise TypeError("A problem model must define an integer status default")
+        schemas_by_status.setdefault(status_code, []).append(resolved)
+    return {
+        status_code: {
+            "content": {
+                _PROBLEM_JSON_CONTENT_TYPE_: {
+                    "schema": schemas[0] if len(schemas) == 1 else {"anyOf": schemas},
+                },
+            },
+        }
+        for status_code, schemas in schemas_by_status.items()
+    }
+
+
+# Pass to a FastAPI route decorator with responses=PROBLEM_RESPONSES.
+# Inline generated schemas avoid application/json insertion and dangling $defs references.
+PROBLEM_RESPONSES: dict[int | str, dict[str, object]] = _create_problem_responses()
 
 
 class ProblemRegistryException(HTTPException):
