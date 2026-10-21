@@ -6,7 +6,7 @@ Your client issued a request that omitted an expected query or path par. Please 
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/missing-request-parameter|Missing Request Parameter|400||
+|https://terradue.github.io/http-apis-problems-detail/missing-request-parameter|Missing Request Parameter|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that omitted an expected query or path par. Please 
 **Example of an `missing-request-parameter` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/missing-request-parameter",
+    "type": "https://terradue.github.io/http-apis-problems-detail/missing-request-parameter",
     "title": "Missing request parameter",
     "detail": "The request is missing an expected query or path parameter.",
     "status": 400,

@@ -6,7 +6,7 @@ Your client issued a request that omitted an expected body property. Please revi
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/missing-body-property|Missing Body Property|400||
+|https://terradue.github.io/http-apis-problems-detail/missing-body-property|Missing Body Property|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that omitted an expected body property. Please revi
 **Example of an `missing-body-property` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/missing-body-property",
+    "type": "https://terradue.github.io/http-apis-problems-detail/missing-body-property",
     "title": "Missing body property",
     "detail": "The request is missing an expected body property.",
     "status": 400,

@@ -13,7 +13,7 @@
 #   limitations under the License.
 
 $schema: 'https://json-schema.org/draft/2020-12/schema'
-$id: 'https://eoap.github.io/problems-registry/1.0.0'
+$id: 'https://terradue.github.io/http-apis-problems-detail/1.0.0'
 title: 'EOAP Problem Details Registry'
 type: object
 anyOf:
@@ -94,7 +94,7 @@ $defs:
       - `code` - a string identifier to aid the provider team better understand the error
       - `errors` - and array of errors providing contextual information on the root cause of the problem
 
-      The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+      The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
     properties:
       instance:
         type: string
@@ -135,7 +135,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/already-exists'
+          const: 'https://terradue.github.io/http-apis-problems-detail/already-exists'
         status:
           type: integer
           description: >-
@@ -173,7 +173,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/bad-request'
+          const: 'https://terradue.github.io/http-apis-problems-detail/bad-request'
         status:
           type: integer
           description: >-
@@ -211,7 +211,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/business-rule-violation'
+          const: 'https://terradue.github.io/http-apis-problems-detail/business-rule-violation'
         status:
           type: integer
           description: >-
@@ -249,7 +249,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-state-transition'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-state-transition'
         status:
           type: integer
           description: >-
@@ -287,7 +287,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/forbidden'
+          const: 'https://terradue.github.io/http-apis-problems-detail/forbidden'
         status:
           type: integer
           description: >-
@@ -325,7 +325,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/gone'
+          const: 'https://terradue.github.io/http-apis-problems-detail/gone'
         status:
           type: integer
           description: >-
@@ -363,7 +363,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/conflict'
+          const: 'https://terradue.github.io/http-apis-problems-detail/conflict'
         status:
           type: integer
           description: >-
@@ -401,7 +401,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/failed-dependency'
+          const: 'https://terradue.github.io/http-apis-problems-detail/failed-dependency'
         status:
           type: integer
           description: >-
@@ -439,7 +439,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/insufficient-storage'
+          const: 'https://terradue.github.io/http-apis-problems-detail/insufficient-storage'
         status:
           type: integer
           description: >-
@@ -477,7 +477,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/method-not-allowed'
+          const: 'https://terradue.github.io/http-apis-problems-detail/method-not-allowed'
         status:
           type: integer
           description: >-
@@ -515,7 +515,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/not-acceptable'
+          const: 'https://terradue.github.io/http-apis-problems-detail/not-acceptable'
         status:
           type: integer
           description: >-
@@ -553,7 +553,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/not-implemented'
+          const: 'https://terradue.github.io/http-apis-problems-detail/not-implemented'
         status:
           type: integer
           description: >-
@@ -591,7 +591,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/request-timeout'
+          const: 'https://terradue.github.io/http-apis-problems-detail/request-timeout'
         status:
           type: integer
           description: >-
@@ -629,7 +629,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/unavailable-for-legal-reasons'
+          const: 'https://terradue.github.io/http-apis-problems-detail/unavailable-for-legal-reasons'
         status:
           type: integer
           description: >-
@@ -667,7 +667,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/unprocessable-content'
+          const: 'https://terradue.github.io/http-apis-problems-detail/unprocessable-content'
         status:
           type: integer
           description: >-
@@ -705,7 +705,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-body-property-format'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format'
         status:
           type: integer
           description: >-
@@ -743,7 +743,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-body-property-value'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value'
         status:
           type: integer
           description: >-
@@ -781,7 +781,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-parameters'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-parameters'
         status:
           type: integer
           description: >-
@@ -819,7 +819,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-request-header-format'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format'
         status:
           type: integer
           description: >-
@@ -858,7 +858,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-request-parameter-format'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format'
         status:
           type: integer
           description: >-
@@ -897,7 +897,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/invalid-request-parameter-value'
+          const: 'https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value'
         status:
           type: integer
           description: >-
@@ -936,7 +936,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/license-cancelled'
+          const: 'https://terradue.github.io/http-apis-problems-detail/license-cancelled'
         status:
           type: integer
           description: >-
@@ -975,7 +975,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/license-expired'
+          const: 'https://terradue.github.io/http-apis-problems-detail/license-expired'
         status:
           type: integer
           description: >-
@@ -1013,7 +1013,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/missing-body-property'
+          const: 'https://terradue.github.io/http-apis-problems-detail/missing-body-property'
         status:
           type: integer
           description: >-
@@ -1051,7 +1051,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/missing-request-header'
+          const: 'https://terradue.github.io/http-apis-problems-detail/missing-request-header'
         status:
           type: integer
           description: >-
@@ -1089,7 +1089,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/missing-request-parameter'
+          const: 'https://terradue.github.io/http-apis-problems-detail/missing-request-parameter'
         status:
           type: integer
           description: >-
@@ -1127,7 +1127,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/not-found'
+          const: 'https://terradue.github.io/http-apis-problems-detail/not-found'
         status:
           type: integer
           description: >-
@@ -1165,7 +1165,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/server-error'
+          const: 'https://terradue.github.io/http-apis-problems-detail/server-error'
         status:
           type: integer
           description: >-
@@ -1203,7 +1203,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/service-unavailable'
+          const: 'https://terradue.github.io/http-apis-problems-detail/service-unavailable'
         status:
           type: integer
           description: >-
@@ -1241,7 +1241,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/unauthorized'
+          const: 'https://terradue.github.io/http-apis-problems-detail/unauthorized'
         status:
           type: integer
           description: >-
@@ -1281,7 +1281,7 @@ $defs:
           type: string
           description: A URI reference that identifies the problem type.
           format: uri
-          const: 'https://eoap.github.io/problems-registry/validation-error'
+          const: 'https://terradue.github.io/http-apis-problems-detail/validation-error'
         status:
           type: integer
           description: >-

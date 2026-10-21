@@ -6,7 +6,7 @@ Your client application should adjust its `Accept`, `Accept-Encoding`, or `Accep
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/not-acceptable|Not Acceptable|406|[MDN: 406 Not Acceptable](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/406)|
+|https://terradue.github.io/http-apis-problems-detail/not-acceptable|Not Acceptable|406|[MDN: 406 Not Acceptable](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/406)|
 
 > **Note** The response should identify the available representations when practical. A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience.
 
@@ -14,7 +14,7 @@ Your client application should adjust its `Accept`, `Accept-Encoding`, or `Accep
 
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/not-acceptable",
+    "type": "https://terradue.github.io/http-apis-problems-detail/not-acceptable",
     "title": "Not Acceptable",
     "detail": "No acceptable representation is available for the requested resource.",
     "status": 406,

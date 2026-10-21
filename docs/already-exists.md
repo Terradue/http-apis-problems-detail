@@ -6,7 +6,7 @@ Your client application tried to create a resource that already exists. Perhaps 
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/already-exists|Already Exists|409||
+|https://terradue.github.io/http-apis-problems-detail/already-exists|Already Exists|409||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client application tried to create a resource that already exists. Perhaps 
 **Example of an `already-exists` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/already-exists",
+    "type": "https://terradue.github.io/http-apis-problems-detail/already-exists",
     "title": "Already exists",
     "detail": "The resource being created already exists.",
     "status": 409,

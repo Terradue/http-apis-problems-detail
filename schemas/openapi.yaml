@@ -39,16 +39,16 @@ components:
 
         `Bad Request` problem detail responses:
 
-         - [The request is invalid or malformed](https://eoap.github.io/problems-registry/bad-request/)
-         - [Invalid body property format](https://eoap.github.io/problems-registry/invalid-body-property-format/)
-         - [Invalid body property value](https://eoap.github.io/problems-registry/invalid-body-property-value/)
-         - [Invalid Parameters](https://eoap.github.io/problems-registry/invalid-parameters/)
-         - [Invalid request header format](https://eoap.github.io/problems-registry/invalid-request-header-format/)
-         - [Invalid request parameter format](https://eoap.github.io/problems-registry/invalid-request-parameter-format/)
-         - [Invalid request parameter value](https://eoap.github.io/problems-registry/invalid-request-parameter-value/)
-         - [Missing body property](https://eoap.github.io/problems-registry/missing-body-property/)
-         - [Missing request header](https://eoap.github.io/problems-registry/missing-request-header/)
-         - [Missing request parameter](https://eoap.github.io/problems-registry/missing-request-parameter/)
+         - [The request is invalid or malformed](https://terradue.github.io/http-apis-problems-detail/bad-request/)
+         - [Invalid body property format](https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format/)
+         - [Invalid body property value](https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value/)
+         - [Invalid Parameters](https://terradue.github.io/http-apis-problems-detail/invalid-parameters/)
+         - [Invalid request header format](https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format/)
+         - [Invalid request parameter format](https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format/)
+         - [Invalid request parameter value](https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value/)
+         - [Missing body property](https://terradue.github.io/http-apis-problems-detail/missing-body-property/)
+         - [Missing request header](https://terradue.github.io/http-apis-problems-detail/missing-request-header/)
+         - [Missing request parameter](https://terradue.github.io/http-apis-problems-detail/missing-request-parameter/)
       content:
         application/problem+json:
           schema:
@@ -275,10 +275,10 @@ components:
 
         `Unprocessable Content` problem detail responses:
 
-         - [The request content cannot be processed](https://eoap.github.io/problems-registry/unprocessable-content/)
-         - [Business rule violation](https://eoap.github.io/problems-registry/business-rule-violation/)
-         - [Invalid state transition](https://eoap.github.io/problems-registry/invalid-state-transition/)
-         - [Validation error](https://eoap.github.io/problems-registry/validation-error/)
+         - [The request content cannot be processed](https://terradue.github.io/http-apis-problems-detail/unprocessable-content/)
+         - [Business rule violation](https://terradue.github.io/http-apis-problems-detail/business-rule-violation/)
+         - [Invalid state transition](https://terradue.github.io/http-apis-problems-detail/invalid-state-transition/)
+         - [Validation error](https://terradue.github.io/http-apis-problems-detail/validation-error/)
       content:
         application/problem+json:
           schema:
@@ -415,7 +415,7 @@ components:
         Representation of a 400 Bad Request response where the server would not
         process the request due to something the server considered to be a client error.
       value:
-        type: 'https://eoap.github.io/problems-registry/bad-request'
+        type: 'https://terradue.github.io/http-apis-problems-detail/bad-request'
         status: 400
         title: Malformed request syntax
         detail: Request body could not be read properly.
@@ -426,7 +426,7 @@ components:
         Representation of a 400 Bad Request response where a rquired `body`
         property was omitted by the consumer.
       value:
-        type: 'https://eoap.github.io/problems-registry/missing-body-property'
+        type: 'https://terradue.github.io/http-apis-problems-detail/missing-body-property'
         status: 400
         title: Missing body property
         detail: The request is missing an expected body property.
@@ -437,7 +437,7 @@ components:
         Representation of a 400 Bad Request response where a rquired `body`
         property was omitted by the consumer.
       value:
-        type: 'https://eoap.github.io/problems-registry/missing-body-property'
+        type: 'https://terradue.github.io/http-apis-problems-detail/missing-body-property'
         status: 400
         title: Missing body property
         detail: The request is missing an expected body property.
@@ -451,7 +451,7 @@ components:
         Representation of a 400 Bad Request response where a `query` or `path`
         parameter was omitted by the consumer.
       value:
-        type: 'https://eoap.github.io/problems-registry/missing-request-parameter'
+        type: 'https://terradue.github.io/http-apis-problems-detail/missing-request-parameter'
         status: 400
         title: Missing request parameter
         detail: The request is missing an expected query or path parameter.
@@ -462,7 +462,7 @@ components:
         Representation of a 400 Bad Request response where a `query` or `path`
         parameter was omitted by the consumer.
       value:
-        type: 'https://eoap.github.io/problems-registry/missing-request-parameter'
+        type: 'https://terradue.github.io/http-apis-problems-detail/missing-request-parameter'
         status: 400
         title: Missing request parameter
         detail: The request is missing an expected query or path parameter.
@@ -476,7 +476,7 @@ components:
         Representation of a 400 Bad Request response where a `header` parameter
         was omitted by the consumer.
       value:
-        type: 'https://eoap.github.io/problems-registry/missing-request-header'
+        type: 'https://terradue.github.io/http-apis-problems-detail/missing-request-header'
         status: 400
         title: Missing request header
         detail: The request is missing an expected HTTP request header.
@@ -487,7 +487,7 @@ components:
         Representation of a 400 Bad Request response where a `header` parameter
         was omitted by the consumer.
       value:
-        type: 'https://eoap.github.io/problems-registry/missing-request-header'
+        type: 'https://terradue.github.io/http-apis-problems-detail/missing-request-header'
         status: 400
         title: Missing request header
         detail: The request is missing an expected HTTP request header.
@@ -501,7 +501,7 @@ components:
         Representation of a 400 Bad Request response where a body property does
         not leverage the correct format
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-body-property-format'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format'
         status: 400
         title: Invalid Body Property Format
         detail: The request body contains a malformed property.
@@ -512,7 +512,7 @@ components:
         Representation of a 400 Bad Request response where a body property does
         not leverage the correct format
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-body-property-format'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format'
         status: 400
         title: Invalid Body Property Format
         detail: The request body contains a malformed property.
@@ -527,7 +527,7 @@ components:
         parameter is malformed.
       value:
         type: >-
-          https://eoap.github.io/problems-registry/invalid-request-parameter-format
+          https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format
         status: 400
         title: Invalid Request Parameter Format
         detail: The request contains a malformed query parameter.
@@ -539,7 +539,7 @@ components:
         parameter is malformed.
       value:
         type: >-
-          https://eoap.github.io/problems-registry/invalid-request-parameter-format
+          https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format
         status: 400
         title: Invalid Request Parameter Format
         detail: The request contains a malformed query parameter.
@@ -553,7 +553,7 @@ components:
         Representation of a 400 Bad Request response where request header
         provided was malformed
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-request-header-format'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format'
         status: 400
         title: Invalid Request Header Format
         detail: The request contains a malformed request header parameter.
@@ -564,7 +564,7 @@ components:
         Representation of a 400 Bad Request response where a query or path
         parameter is malformed.
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-request-header-format'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format'
         status: 400
         title: Invalid Request Header Format
         detail: The request contains a malformed request header parameter.
@@ -578,7 +578,7 @@ components:
         Representation of a 400 Bad Request response where the request body
         contains a invalid property value
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-body-property-value'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value'
         status: 400
         title: Invalid Body Property Value
         detail: The request body contains an invalid body property value.
@@ -589,7 +589,7 @@ components:
         Representation of a 400 Bad Request response where the request body
         contains a invalid property value
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-body-property-value'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value'
         status: 400
         title: Invalid Body Property Value
         detail: The request body contains an invalid body property value.
@@ -606,7 +606,7 @@ components:
         a invalid query or path parameter value.
       value:
         type: >-
-          https://eoap.github.io/problems-registry/invalid-request-parameter-value
+          https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value
         status: 400
         title: Invalid Request Parameter Value
         detail: The request body contains an invalid request parameter value.
@@ -618,7 +618,7 @@ components:
         a invalid query or path parameter value.
       value:
         type: >-
-          https://eoap.github.io/problems-registry/invalid-request-parameter-value
+          https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value
         status: 400
         title: Invalid Request Parameter Value
         detail: The request body contains an invalid request parameter value.
@@ -631,70 +631,70 @@ components:
 
     conflict:
       value:
-        type: 'https://eoap.github.io/problems-registry/conflict'
+        type: 'https://terradue.github.io/http-apis-problems-detail/conflict'
         title: Conflict
         detail: The request conflicts with the current state of the target resource.
         status: 409
 
     failed-dependency:
       value:
-        type: 'https://eoap.github.io/problems-registry/failed-dependency'
+        type: 'https://terradue.github.io/http-apis-problems-detail/failed-dependency'
         title: Failed Dependency
         detail: The requested action failed because an action on which it depended failed.
         status: 424
 
     insufficient-storage:
       value:
-        type: 'https://eoap.github.io/problems-registry/insufficient-storage'
+        type: 'https://terradue.github.io/http-apis-problems-detail/insufficient-storage'
         title: Insufficient Storage
         detail: The server has insufficient storage to complete the requested action.
         status: 507
 
     method-not-allowed:
       value:
-        type: 'https://eoap.github.io/problems-registry/method-not-allowed'
+        type: 'https://terradue.github.io/http-apis-problems-detail/method-not-allowed'
         title: Method Not Allowed
         detail: The request method is not supported by the target resource.
         status: 405
 
     not-acceptable:
       value:
-        type: 'https://eoap.github.io/problems-registry/not-acceptable'
+        type: 'https://terradue.github.io/http-apis-problems-detail/not-acceptable'
         title: Not Acceptable
         detail: No acceptable representation is available for the requested resource.
         status: 406
 
     not-implemented:
       value:
-        type: 'https://eoap.github.io/problems-registry/not-implemented'
+        type: 'https://terradue.github.io/http-apis-problems-detail/not-implemented'
         title: Not Implemented
         detail: The server does not support the functionality required to fulfill the request.
         status: 501
 
     request-timeout:
       value:
-        type: 'https://eoap.github.io/problems-registry/request-timeout'
+        type: 'https://terradue.github.io/http-apis-problems-detail/request-timeout'
         title: Request Timeout
         detail: The server timed out while waiting to receive the request.
         status: 408
 
     unavailable-for-legal-reasons:
       value:
-        type: 'https://eoap.github.io/problems-registry/unavailable-for-legal-reasons'
+        type: 'https://terradue.github.io/http-apis-problems-detail/unavailable-for-legal-reasons'
         title: Unavailable For Legal Reasons
         detail: The requested resource is unavailable due to legal reasons.
         status: 451
 
     unprocessable-content:
       value:
-        type: 'https://eoap.github.io/problems-registry/unprocessable-content'
+        type: 'https://terradue.github.io/http-apis-problems-detail/unprocessable-content'
         title: Unprocessable Content
         detail: The request content is syntactically correct but cannot be processed.
         status: 422
 
     unauthorized:
       value:
-        type: 'https://eoap.github.io/problems-registry/unauthorized'
+        type: 'https://terradue.github.io/http-apis-problems-detail/unauthorized'
         title: Unauthorized
         detail: >-
           Access token not set or invalid. The requested resource could not be
@@ -703,7 +703,7 @@ components:
 
     forbidden:
       value:
-        type: 'https://eoap.github.io/problems-registry/forbidden'
+        type: 'https://terradue.github.io/http-apis-problems-detail/forbidden'
         title: Forbidden
         detail: The resource could not be returned as the requestor is not authorized
         status: 403
@@ -713,7 +713,7 @@ components:
         Representation of a 410 Gone response for a resource that has been
         permanently removed.
       value:
-        type: 'https://eoap.github.io/problems-registry/gone'
+        type: 'https://terradue.github.io/http-apis-problems-detail/gone'
         title: Gone
         detail: >-
           The requested resource is no longer available and is unlikely to be
@@ -722,7 +722,7 @@ components:
 
     not-found:
       value:
-        type: 'https://eoap.github.io/problems-registry/not-found'
+        type: 'https://terradue.github.io/http-apis-problems-detail/not-found'
         title: Not found
         detail: The requested resource was not found
         status: 404
@@ -732,7 +732,7 @@ components:
         Representation of a 409 Conflict response where a consumer is trying
         to create a resource that already exists
       value:
-        type: 'https://eoap.github.io/problems-registry/already-exists'
+        type: 'https://terradue.github.io/http-apis-problems-detail/already-exists'
         status: 409
         title: Already exists
         detail: The resource being created already exists.
@@ -749,7 +749,7 @@ components:
         surface all validation errors and negate the need for a trial and error
         workflow on your side.
       value:
-        type: 'https://eoap.github.io/problems-registry/validation-error'
+        type: 'https://terradue.github.io/http-apis-problems-detail/validation-error'
         status: 422
         title: Validation Error
         detail: The request is invalid.
@@ -765,7 +765,7 @@ components:
         Representation of a 422 Bad Request response where the request is deemed
         invalid as if fails to meet certain business rule expectations.
       value:
-        type: 'https://eoap.github.io/problems-registry/business-rule-violation'
+        type: 'https://terradue.github.io/http-apis-problems-detail/business-rule-violation'
         status: 422
         title: Business Rule Violation
         detail: The request body is invalid and not meeting business rules.
@@ -783,7 +783,7 @@ components:
         Representation of a 422 Bad Request response where the requested
         transition is not valid for the current item status.
       value:
-        type: 'https://eoap.github.io/problems-registry/invalid-state-transition'
+        type: 'https://terradue.github.io/http-apis-problems-detail/invalid-state-transition'
         status: 422
         title: Invalid State Transition
         detail: The requested transition is not valid for the current item status.
@@ -800,7 +800,7 @@ components:
         associated with the client has expired thus rendering the service
         unavailable.
       value:
-        type: 'https://eoap.github.io/problems-registry/license-expired'
+        type: 'https://terradue.github.io/http-apis-problems-detail/license-expired'
         status: 503
         title: License Expired
         detail: >-
@@ -814,7 +814,7 @@ components:
         associated with the client has been cancelled thus rendering the service
         unavailable.
       value:
-        type: 'https://eoap.github.io/problems-registry/license-cancelled'
+        type: 'https://terradue.github.io/http-apis-problems-detail/license-cancelled'
         status: 503
         title: License Cancelled
         detail: >-
@@ -824,14 +824,14 @@ components:
 
     server-error:
       value:
-        type: 'https://eoap.github.io/problems-registry/server-error'
+        type: 'https://terradue.github.io/http-apis-problems-detail/server-error'
         title: Server Error
         detail: The server encountered an unexpected error
         status: 500
 
     service-unavailable:
       value:
-        type: 'https://eoap.github.io/problems-registry/service-unavailable'
+        type: 'https://terradue.github.io/http-apis-problems-detail/service-unavailable'
         title: Service Unavailable
         detail: The service is currently unavailable
         status: 500

@@ -6,7 +6,7 @@ Your client issued a request that contained an invalid body property value. Plea
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/invalid-body-property-value|Invalid Body Property Value|400||
+|https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value|Invalid Body Property Value|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that contained an invalid body property value. Plea
 **Example of an `invalid-body-property-value` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/invalid-body-property-value",
+    "type": "https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value",
     "title": "Invalid Body Property Value",
     "detail": "The request body contains an invalid body property value.",
     "status": 400,

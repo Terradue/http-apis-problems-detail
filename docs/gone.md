@@ -6,7 +6,7 @@ Your client application should not repeat the request and should remove or repla
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/gone|Gone|410|[MDN: 410 Gone](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/410)|
+|https://terradue.github.io/http-apis-problems-detail/gone|Gone|410|[MDN: 410 Gone](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/410)|
 
 > **Note** A `410 Gone` response is cacheable by default. A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience.
 
@@ -14,7 +14,7 @@ Your client application should not repeat the request and should remove or repla
 
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/gone",
+    "type": "https://terradue.github.io/http-apis-problems-detail/gone",
     "title": "Gone",
     "detail": "The requested resource is no longer available and is unlikely to be available again.",
     "status": 410,

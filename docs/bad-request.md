@@ -6,7 +6,7 @@ Your client application initiated a request that is malformed. Please review you
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/bad-request|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
+|https://terradue.github.io/http-apis-problems-detail/bad-request|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
 
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
@@ -15,7 +15,7 @@ Your client application initiated a request that is malformed. Please review you
 **Examples of a `bad-request` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/bad-request",
+    "type": "https://terradue.github.io/http-apis-problems-detail/bad-request",
     "title": "Bad Request",
     "detail": "The request is invalid or malformed",
     "status": 400,

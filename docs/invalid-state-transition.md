@@ -6,7 +6,7 @@ Your client issued a request that failed current item status transition. Please 
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/invalid-state-transition|Invalid State Transition|422||
+|https://terradue.github.io/http-apis-problems-detail/invalid-state-transition|Invalid State Transition|422||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that failed current item status transition. Please 
 **Example of an `invalid-state-transition` problem details:**
 ```json
 {
-  "type": "https://eoap.github.io/problems-registry/invalid-state-transition",
+  "type": "https://terradue.github.io/http-apis-problems-detail/invalid-state-transition",
   "status": 422,
   "title": "Invalid State Transition",
   "detail": "The requested transition is not valid for the current item status.",

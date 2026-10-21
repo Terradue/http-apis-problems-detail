@@ -6,7 +6,7 @@ Your client application should use one of the methods advertised by the server i
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/method-not-allowed|Method Not Allowed|405|[MDN: 405 Method Not Allowed](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/405)|
+|https://terradue.github.io/http-apis-problems-detail/method-not-allowed|Method Not Allowed|405|[MDN: 405 Method Not Allowed](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/405)|
 
 > **Note** A `405 Method Not Allowed` response must include an `Allow` header listing the methods supported by the target resource. A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience.
 
@@ -14,7 +14,7 @@ Your client application should use one of the methods advertised by the server i
 
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/method-not-allowed",
+    "type": "https://terradue.github.io/http-apis-problems-detail/method-not-allowed",
     "title": "Method Not Allowed",
     "detail": "The request method is not supported by the target resource.",
     "status": 405,

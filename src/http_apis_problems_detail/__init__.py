@@ -58,7 +58,7 @@ class ProblemDetails(BaseModel):
     """
     The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
     The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-    The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+    The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
     """
 
     model_config = ConfigDict(
@@ -84,8 +84,8 @@ class AlreadyExists(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/already-exists"] = (
-        "https://eoap.github.io/problems-registry/already-exists"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/already-exists"] = (
+        "https://terradue.github.io/http-apis-problems-detail/already-exists"
     )
     """
     A URI reference that identifies the problem type.
@@ -111,8 +111,8 @@ class BadRequest(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/bad-request"] = (
-        "https://eoap.github.io/problems-registry/bad-request"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/bad-request"] = (
+        "https://terradue.github.io/http-apis-problems-detail/bad-request"
     )
     """
     A URI reference that identifies the problem type.
@@ -136,9 +136,9 @@ class BusinessRuleViolation(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/business-rule-violation"] = (
-        "https://eoap.github.io/problems-registry/business-rule-violation"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/business-rule-violation"
+    ] = "https://terradue.github.io/http-apis-problems-detail/business-rule-violation"
     """
     A URI reference that identifies the problem type.
     """
@@ -163,9 +163,9 @@ class InvalidStateTransition(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-state-transition"] = (
-        "https://eoap.github.io/problems-registry/invalid-state-transition"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/invalid-state-transition"
+    ] = "https://terradue.github.io/http-apis-problems-detail/invalid-state-transition"
     """
     A URI reference that identifies the problem type.
     """
@@ -190,8 +190,8 @@ class Forbidden(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/forbidden"] = (
-        "https://eoap.github.io/problems-registry/forbidden"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/forbidden"] = (
+        "https://terradue.github.io/http-apis-problems-detail/forbidden"
     )
     """
     A URI reference that identifies the problem type.
@@ -217,8 +217,8 @@ class Gone(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/gone"] = (
-        "https://eoap.github.io/problems-registry/gone"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/gone"] = (
+        "https://terradue.github.io/http-apis-problems-detail/gone"
     )
     """
     A URI reference that identifies the problem type.
@@ -244,8 +244,8 @@ class Conflict(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/conflict"] = (
-        "https://eoap.github.io/problems-registry/conflict"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/conflict"] = (
+        "https://terradue.github.io/http-apis-problems-detail/conflict"
     )
     """
     A URI reference that identifies the problem type.
@@ -271,8 +271,8 @@ class FailedDependency(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/failed-dependency"] = (
-        "https://eoap.github.io/problems-registry/failed-dependency"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/failed-dependency"] = (
+        "https://terradue.github.io/http-apis-problems-detail/failed-dependency"
     )
     """
     A URI reference that identifies the problem type.
@@ -298,8 +298,8 @@ class InsufficientStorage(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/insufficient-storage"] = (
-        "https://eoap.github.io/problems-registry/insufficient-storage"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/insufficient-storage"] = (
+        "https://terradue.github.io/http-apis-problems-detail/insufficient-storage"
     )
     """
     A URI reference that identifies the problem type.
@@ -325,8 +325,8 @@ class MethodNotAllowed(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/method-not-allowed"] = (
-        "https://eoap.github.io/problems-registry/method-not-allowed"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/method-not-allowed"] = (
+        "https://terradue.github.io/http-apis-problems-detail/method-not-allowed"
     )
     """
     A URI reference that identifies the problem type.
@@ -352,8 +352,8 @@ class NotAcceptable(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/not-acceptable"] = (
-        "https://eoap.github.io/problems-registry/not-acceptable"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/not-acceptable"] = (
+        "https://terradue.github.io/http-apis-problems-detail/not-acceptable"
     )
     """
     A URI reference that identifies the problem type.
@@ -379,8 +379,8 @@ class NotImplemented(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/not-implemented"] = (
-        "https://eoap.github.io/problems-registry/not-implemented"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/not-implemented"] = (
+        "https://terradue.github.io/http-apis-problems-detail/not-implemented"
     )
     """
     A URI reference that identifies the problem type.
@@ -406,8 +406,8 @@ class RequestTimeout(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/request-timeout"] = (
-        "https://eoap.github.io/problems-registry/request-timeout"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/request-timeout"] = (
+        "https://terradue.github.io/http-apis-problems-detail/request-timeout"
     )
     """
     A URI reference that identifies the problem type.
@@ -433,9 +433,9 @@ class UnavailableForLegalReasons(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/unavailable-for-legal-reasons"] = (
-        "https://eoap.github.io/problems-registry/unavailable-for-legal-reasons"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/unavailable-for-legal-reasons"
+    ] = "https://terradue.github.io/http-apis-problems-detail/unavailable-for-legal-reasons"
     """
     A URI reference that identifies the problem type.
     """
@@ -460,8 +460,8 @@ class UnprocessableContent(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/unprocessable-content"] = (
-        "https://eoap.github.io/problems-registry/unprocessable-content"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/unprocessable-content"] = (
+        "https://terradue.github.io/http-apis-problems-detail/unprocessable-content"
     )
     """
     A URI reference that identifies the problem type.
@@ -487,9 +487,9 @@ class InvalidBodyPropertyFormat(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-body-property-format"] = (
-        "https://eoap.github.io/problems-registry/invalid-body-property-format"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format"
+    ] = "https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format"
     """
     A URI reference that identifies the problem type.
     """
@@ -514,9 +514,9 @@ class InvalidBodyPropertyValue(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-body-property-value"] = (
-        "https://eoap.github.io/problems-registry/invalid-body-property-value"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value"
+    ] = "https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value"
     """
     A URI reference that identifies the problem type.
     """
@@ -541,8 +541,8 @@ class InvalidParameters(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-parameters"] = (
-        "https://eoap.github.io/problems-registry/invalid-parameters"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/invalid-parameters"] = (
+        "https://terradue.github.io/http-apis-problems-detail/invalid-parameters"
     )
     """
     A URI reference that identifies the problem type.
@@ -568,9 +568,9 @@ class InvalidRequestHeaderFormat(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-request-header-format"] = (
-        "https://eoap.github.io/problems-registry/invalid-request-header-format"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format"
+    ] = "https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format"
     """
     A URI reference that identifies the problem type.
     """
@@ -595,9 +595,9 @@ class InvalidRequestParameterFormat(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-request-parameter-format"] = (
-        "https://eoap.github.io/problems-registry/invalid-request-parameter-format"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format"
+    ] = "https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format"
     """
     A URI reference that identifies the problem type.
     """
@@ -622,9 +622,9 @@ class InvalidRequestParameterValue(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/invalid-request-parameter-value"] = (
-        "https://eoap.github.io/problems-registry/invalid-request-parameter-value"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value"
+    ] = "https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value"
     """
     A URI reference that identifies the problem type.
     """
@@ -649,8 +649,8 @@ class LicenseCancelled(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/license-cancelled"] = (
-        "https://eoap.github.io/problems-registry/license-cancelled"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/license-cancelled"] = (
+        "https://terradue.github.io/http-apis-problems-detail/license-cancelled"
     )
     """
     A URI reference that identifies the problem type.
@@ -676,8 +676,8 @@ class LicenseExpired(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/license-expired"] = (
-        "https://eoap.github.io/problems-registry/license-expired"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/license-expired"] = (
+        "https://terradue.github.io/http-apis-problems-detail/license-expired"
     )
     """
     A URI reference that identifies the problem type.
@@ -703,8 +703,8 @@ class MissingBodyProperty(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/missing-body-property"] = (
-        "https://eoap.github.io/problems-registry/missing-body-property"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/missing-body-property"] = (
+        "https://terradue.github.io/http-apis-problems-detail/missing-body-property"
     )
     """
     A URI reference that identifies the problem type.
@@ -730,8 +730,8 @@ class MissingRequestHeader(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/missing-request-header"] = (
-        "https://eoap.github.io/problems-registry/missing-request-header"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/missing-request-header"] = (
+        "https://terradue.github.io/http-apis-problems-detail/missing-request-header"
     )
     """
     A URI reference that identifies the problem type.
@@ -757,9 +757,9 @@ class MissingRequestParameter(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/missing-request-parameter"] = (
-        "https://eoap.github.io/problems-registry/missing-request-parameter"
-    )
+    type: Literal[
+        "https://terradue.github.io/http-apis-problems-detail/missing-request-parameter"
+    ] = "https://terradue.github.io/http-apis-problems-detail/missing-request-parameter"
     """
     A URI reference that identifies the problem type.
     """
@@ -784,8 +784,8 @@ class NotFound(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/not-found"] = (
-        "https://eoap.github.io/problems-registry/not-found"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/not-found"] = (
+        "https://terradue.github.io/http-apis-problems-detail/not-found"
     )
     """
     A URI reference that identifies the problem type.
@@ -811,8 +811,8 @@ class ServerError(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/server-error"] = (
-        "https://eoap.github.io/problems-registry/server-error"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/server-error"] = (
+        "https://terradue.github.io/http-apis-problems-detail/server-error"
     )
     """
     A URI reference that identifies the problem type.
@@ -838,8 +838,8 @@ class ServiceUnavailable(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/service-unavailable"] = (
-        "https://eoap.github.io/problems-registry/service-unavailable"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/service-unavailable"] = (
+        "https://terradue.github.io/http-apis-problems-detail/service-unavailable"
     )
     """
     A URI reference that identifies the problem type.
@@ -865,8 +865,8 @@ class Unauthorized(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/unauthorized"] = (
-        "https://eoap.github.io/problems-registry/unauthorized"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/unauthorized"] = (
+        "https://terradue.github.io/http-apis-problems-detail/unauthorized"
     )
     """
     A URI reference that identifies the problem type.
@@ -892,8 +892,8 @@ class ValidationError(ProblemDetails):
         extra="allow",
         populate_by_name=True,
     )
-    type: Literal["https://eoap.github.io/problems-registry/validation-error"] = (
-        "https://eoap.github.io/problems-registry/validation-error"
+    type: Literal["https://terradue.github.io/http-apis-problems-detail/validation-error"] = (
+        "https://terradue.github.io/http-apis-problems-detail/validation-error"
     )
     """
     A URI reference that identifies the problem type.

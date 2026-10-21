@@ -6,7 +6,7 @@ Your client issued a request that omitted an expected request header. Please rev
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/missing-request-header|Missing Request Header|400||
+|https://terradue.github.io/http-apis-problems-detail/missing-request-header|Missing Request Header|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that omitted an expected request header. Please rev
 **Example of an `missing-request-header` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/missing-request-header",
+    "type": "https://terradue.github.io/http-apis-problems-detail/missing-request-header",
     "title": "Missing request header",
     "detail": "The request is missing an expected HTTP request header.",
     "status": 400,

@@ -6,7 +6,7 @@ Your client application should modify the request before resubmitting it; repeat
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/unprocessable-content|Unprocessable Content|422|[MDN: 422 Unprocessable Content](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/422)|
+|https://terradue.github.io/http-apis-problems-detail/unprocessable-content|Unprocessable Content|422|[MDN: 422 Unprocessable Content](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/422)|
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience.
 
@@ -14,7 +14,7 @@ Your client application should modify the request before resubmitting it; repeat
 
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/unprocessable-content",
+    "type": "https://terradue.github.io/http-apis-problems-detail/unprocessable-content",
     "title": "Unprocessable Content",
     "detail": "The request content is syntactically correct but cannot be processed.",
     "status": 422,

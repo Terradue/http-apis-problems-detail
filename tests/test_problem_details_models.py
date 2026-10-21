@@ -16,7 +16,7 @@ import unittest
 
 from pydantic import ValidationError as PydanticValidationError
 
-import eoap_problems_registry as registry
+import http_apis_problems_detail as registry
 
 PROBLEM_MODEL_NAMES = {
     "AlreadyExists",
@@ -86,7 +86,9 @@ class ProblemDetailsModelsTest(unittest.TestCase):
                 payload = model_type().model_dump(mode="json")
 
                 self.assertTrue(
-                    payload["type"].startswith("https://eoap.github.io/problems-registry/")
+                    payload["type"].startswith(
+                        "https://terradue.github.io/http-apis-problems-detail/"
+                    )
                 )
                 self.assertIsInstance(payload["status"], int)
                 self.assertGreaterEqual(payload["status"], 400)
@@ -103,7 +105,7 @@ class ProblemDetailsModelsTest(unittest.TestCase):
 
                 self.assertEqual(
                     payload["type"],
-                    f"https://eoap.github.io/problems-registry/{uri_suffix}",
+                    f"https://terradue.github.io/http-apis-problems-detail/{uri_suffix}",
                 )
                 self.assertEqual(payload["status"], status)
                 self.assertEqual(payload["title"], title)
@@ -136,7 +138,7 @@ class ProblemDetailsModelsTest(unittest.TestCase):
                         "provider_hint": "Use limit=100 or less.",
                     }
                 ],
-                "type": "https://eoap.github.io/problems-registry/missing-request-parameter",
+                "type": "https://terradue.github.io/http-apis-problems-detail/missing-request-parameter",
                 "status": 400,
                 "title": "Missing request parameter",
                 "detail": "The request is missing an expected query or path parameter.",
@@ -154,7 +156,7 @@ class ProblemDetailsModelsTest(unittest.TestCase):
         self.assertEqual(
             registry.Gone().model_dump(mode="json", exclude_none=True),
             {
-                "type": "https://eoap.github.io/problems-registry/gone",
+                "type": "https://terradue.github.io/http-apis-problems-detail/gone",
                 "status": 410,
                 "title": "Gone",
                 "detail": (

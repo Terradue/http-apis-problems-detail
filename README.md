@@ -5,7 +5,7 @@
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eoap/problems-registry/package.yaml?branch=develop&event=push&label=build&logo=githubactions)](https://github.com/eoap/problems-registry/actions/workflows/package.yaml?query=branch%3Adevelop)
 [![Code coverage](https://img.shields.io/codecov/c/github/eoap/problems-registry/develop?logo=codecov)](https://app.codecov.io/gh/eoap-problems-registry/tree/develop)
 
-[EOAP Problems Registry](https://eoap.github.io/problems-registry/) is a shared registry of API problem detail types for EOAP services. The problem responses conform to [RFC 9457](https://www.rfc-editor.org/info/rfc9457), formerly [RFC 7807](https://www.rfc-editor.org/info/rfc7807), and are published as documentation, JSON Schema/OpenAPI artifacts, and a Python package with generated Pydantic models.
+[EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/) is a shared registry of API problem detail types for EOAP services. The problem responses conform to [RFC 9457](https://www.rfc-editor.org/info/rfc9457), formerly [RFC 7807](https://www.rfc-editor.org/info/rfc7807), and are published as documentation, JSON Schema/OpenAPI artifacts, and a Python package with generated Pydantic models.
 
 The registry is intended to give API providers and consumers a common vocabulary for reusable `application/problem+json` responses.
 
@@ -102,7 +102,7 @@ The resulting payload includes the registered `type`, `status`, `title`, and `de
       "parameter": "limit"
     }
   ],
-  "type": "https://eoap.github.io/problems-registry/missing-request-parameter",
+  "type": "https://terradue.github.io/http-apis-problems-detail/missing-request-parameter",
   "status": 400,
   "title": "Missing request parameter",
   "detail": "The request is missing an expected query or path parameter.",
@@ -145,7 +145,7 @@ Use the schema and OpenAPI files directly when integrating the registry into API
 
 - JSON Schema definitions: [`schemas/schema.yaml`](schemas/schema.yaml)
 - OpenAPI response components and examples: [`schemas/openapi.yaml`](schemas/openapi.yaml)
-- Published documentation: <https://eoap.github.io/problems-registry/>
+- Published documentation: <https://terradue.github.io/http-apis-problems-detail/>
 
 When a response needs more context, include an `errors` array. Each item must contain `detail` and may include `pointer`, `parameter`, `header`, `code`, or provider-specific extension fields.
 
@@ -188,7 +188,7 @@ To add or update a problem type:
 Problem type URIs should use the published registry base URL:
 
 ```text
-https://eoap.github.io/problems-registry/{problem-name}
+https://terradue.github.io/http-apis-problems-detail/{problem-name}
 ```
 
 Use hyphen-separated names for problem page filenames and URI suffixes, for example `missing-body-property`.

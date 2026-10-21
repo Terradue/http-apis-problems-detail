@@ -6,7 +6,7 @@ Your client application issued a requested to a protected resource without suppl
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/unauthorized|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
+|https://terradue.github.io/http-apis-problems-detail/unauthorized|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
 
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
@@ -15,7 +15,7 @@ Your client application issued a requested to a protected resource without suppl
 **Examples of an `unauthorized` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/unauthorized",
+    "type": "https://terradue.github.io/http-apis-problems-detail/unauthorized",
     "title": "Unauthorized",
     "detail": "Access token not set or invalid, and the requested resource could not be returned",
     "status": 401,

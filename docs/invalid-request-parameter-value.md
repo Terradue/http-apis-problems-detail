@@ -6,7 +6,7 @@ Your client issued a request that contained an invalid query or path parameter v
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/invalid-request-parameter-value|Invalid Request Parameter Value|400||
+|https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value|Invalid Request Parameter Value|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that contained an invalid query or path parameter v
 **Example of an `invalid-request-parameter-value` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/invalid-request-parameter-value",
+    "type": "https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value",
     "title": "Invalid Request Parameter Value",
     "detail": "The request body contains an invalid request parameter value.",
     "status": 400,

@@ -1,8 +1,8 @@
-# EOAP Problem Details Registry
+# Problem Details for HTTP APIs
 
-This registry acts as a well-known location for problem detail types returned by various EOAP APIs. It acts as a central registry to promote reuse and clarity of problem detail types conforming to [RFC 9457](https://www.rfc-editor.org/info/rfc9457), formerly [RFC 7807](https://www.rfc-editor.org/info/rfc7807).
+This registry acts as a well-known location for problem detail types returned by various APIs. It acts as a central registry to promote reuse and clarity of problem detail types conforming to [RFC 9457](https://www.rfc-editor.org/info/rfc9457), formerly [RFC 7807](https://www.rfc-editor.org/info/rfc7807).
 
-## EOAP Problem Types
+## Problem Types
 
 | Problem type | Description |
 |--------------|-------------|
@@ -52,13 +52,13 @@ When necessary, a Problem Detail response *MAY* include additional detail on the
 Install the package in an environment with Pydantic 2:
 
 ```bash
-pip install eoap-problems-registry
+pip install http-apis-problems-detail
 ```
 
 Use the generated models to build responses with fixed registry fields and optional extension members:
 
 ```python
-import eoap_problems_registry as registry
+import http_apis_problems_detail as registry
 
 problem = registry.MissingRequestParameter(
     instance="https://api.example.test/problems/abc123",
@@ -86,7 +86,7 @@ The resulting payload includes the registered `type`, `status`, `title`, and `de
       "parameter": "limit"
     }
   ],
-  "type": "https://eoap.github.io/problems-registry/missing-request-parameter",
+  "type": "https://terradue.github.io/http-apis-problems-detail/missing-request-parameter",
   "status": 400,
   "title": "Missing request parameter",
   "detail": "The request is missing an expected query or path parameter.",

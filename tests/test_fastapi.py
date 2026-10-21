@@ -20,9 +20,9 @@ import unittest
 from fastapi import HTTPException
 from fastapi.requests import Request
 
-import eoap_problems_registry as registry
-import eoap_problems_registry.fastapi as fastapi_registry
-from eoap_problems_registry.fastapi import ProblemRegistryException
+import http_apis_problems_detail as registry
+import http_apis_problems_detail.fastapi as fastapi_registry
+from http_apis_problems_detail.fastapi import ProblemRegistryException
 
 
 class ProblemRegistryExceptionTest(unittest.TestCase):

@@ -8,7 +8,7 @@ Please review your request to determine if you can remain within appropriate bus
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/validation-error|Validation Error|422||
+|https://terradue.github.io/http-apis-problems-detail/validation-error|Validation Error|422||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -16,7 +16,7 @@ Please review your request to determine if you can remain within appropriate bus
 
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/validation-error",
+    "type": "https://terradue.github.io/http-apis-problems-detail/validation-error",
     "title": "Validation Error",
     "detail": "The request is not valid.",
     "status": 422,

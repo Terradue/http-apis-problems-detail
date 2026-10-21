@@ -6,7 +6,7 @@ Your client issued a request that contained a malformed body property. Please re
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/invalid-body-property-format|Invalid Body Property Format|400||
+|https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format|Invalid Body Property Format|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that contained a malformed body property. Please re
 **Example of an `invalid-body-property-format` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/invalid-body-property-format",
+    "type": "https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format",
     "title": "Invalid Body Property Format",
     "detail": "The request body contains a malformed property.",
     "status": 400,

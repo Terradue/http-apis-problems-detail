@@ -6,7 +6,7 @@ Your client application tried to perform an operation on a resource that it's no
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/forbidden|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
+|https://terradue.github.io/http-apis-problems-detail/forbidden|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
 
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
@@ -15,7 +15,7 @@ Your client application tried to perform an operation on a resource that it's no
 **Examples of a `forbidden` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/forbidden",
+    "type": "https://terradue.github.io/http-apis-problems-detail/forbidden",
     "title": "Forbidden",
     "detail": "The resource could not be returned as the requestor is not authorized",
     "status": 403,

@@ -6,7 +6,7 @@ Your client application did everything correct. Unfortunately our API encountere
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/server-error|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
+|https://terradue.github.io/http-apis-problems-detail/server-error|See HTTP Status Code|N/A|[RFC9457](https://www.iana.org/go/rfc9457)|
 
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
@@ -15,7 +15,7 @@ Your client application did everything correct. Unfortunately our API encountere
 **Examples of a `server-error` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/server-error",
+    "type": "https://terradue.github.io/http-apis-problems-detail/server-error",
     "title": "Server Error",
     "detail": "The server encountered an unexpected error",
     "status": 500,

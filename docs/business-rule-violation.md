@@ -6,7 +6,7 @@ Your client issued a request that failed business rule validation. Please review
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/business-rule-violation|Business Rule Violation|422||
+|https://terradue.github.io/http-apis-problems-detail/business-rule-violation|Business Rule Violation|422||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that failed business rule validation. Please review
 **Example of an `business-rule-violation` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/business-rule-violation",
+    "type": "https://terradue.github.io/http-apis-problems-detail/business-rule-violation",
     "title": "Business Rule Violation",
     "detail": "The request body is invalid and not meeting business rules.",
     "status": 422,

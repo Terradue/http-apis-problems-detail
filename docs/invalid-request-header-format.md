@@ -6,7 +6,7 @@ Your client issued a request that contained a malformed request header. Please r
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/invalid-request-header-format|Invalid Request Header Format|400||
+|https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format|Invalid Request Header Format|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that contained a malformed request header. Please r
 **Example of an `invalid-request-header-format` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/invalid-request-header-format",
+    "type": "https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format",
     "title": "Invalid Request Header Format",
     "detail": "The request contains a malformed request header parameter.",
     "status": 400,

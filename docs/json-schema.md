@@ -286,7 +286,7 @@
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 | Property                                   | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                                                    |
 | ------------------------------------------ | ------- | ------ | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -453,7 +453,7 @@ Your client application tried to create a resource that already exists. Perhaps 
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/already-exists"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/already-exists"`
 
 #### <a name="anyOf_i0_allOf_i1_status"></a>1.2.2. Property `EOAP Problem Details Registry > anyOf > item 0 > allOf > item 1 > status`
 
@@ -514,7 +514,7 @@ Specific value: `"The resource being created already exists."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i1_allOf_i1"></a>2.2. Property `EOAP Problem Details Registry > anyOf > item 1 > allOf > item 1`
 
@@ -544,7 +544,7 @@ Your client application initiated a request that is malformed. Please review you
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/bad-request"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/bad-request"`
 
 #### <a name="anyOf_i1_allOf_i1_status"></a>2.2.2. Property `EOAP Problem Details Registry > anyOf > item 1 > allOf > item 1 > status`
 
@@ -605,7 +605,7 @@ Specific value: `"The request is invalid or malformed."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i2_allOf_i1"></a>3.2. Property `EOAP Problem Details Registry > anyOf > item 2 > allOf > item 1`
 
@@ -635,7 +635,7 @@ Your client issued a request that failed business rule validation. Please review
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/business-rule-violation"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/business-rule-violation"`
 
 #### <a name="anyOf_i2_allOf_i1_status"></a>3.2.2. Property `EOAP Problem Details Registry > anyOf > item 2 > allOf > item 1 > status`
 
@@ -696,7 +696,7 @@ Specific value: `"The request body is invalid and not meeting business rules."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i3_allOf_i1"></a>4.2. Property `EOAP Problem Details Registry > anyOf > item 3 > allOf > item 1`
 
@@ -726,7 +726,7 @@ Your client application should resolve the conflict before resubmitting the requ
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/conflict"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/conflict"`
 
 #### <a name="anyOf_i3_allOf_i1_status"></a>4.2.2. Property `EOAP Problem Details Registry > anyOf > item 3 > allOf > item 1 > status`
 
@@ -787,7 +787,7 @@ Specific value: `"The request conflicts with the current state of the target res
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i4_allOf_i1"></a>5.2. Property `EOAP Problem Details Registry > anyOf > item 4 > allOf > item 1`
 
@@ -817,7 +817,7 @@ Your client application should resolve the failed prerequisite before retrying t
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/failed-dependency"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/failed-dependency"`
 
 #### <a name="anyOf_i4_allOf_i1_status"></a>5.2.2. Property `EOAP Problem Details Registry > anyOf > item 4 > allOf > item 1 > status`
 
@@ -878,7 +878,7 @@ Specific value: `"The requested action failed because an action on which it depe
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i5_allOf_i1"></a>6.2. Property `EOAP Problem Details Registry > anyOf > item 5 > allOf > item 1`
 
@@ -908,7 +908,7 @@ Your client application tried to perform an operation on a resource that it's no
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/forbidden"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/forbidden"`
 
 #### <a name="anyOf_i5_allOf_i1_status"></a>6.2.2. Property `EOAP Problem Details Registry > anyOf > item 5 > allOf > item 1 > status`
 
@@ -969,7 +969,7 @@ Specific value: `"The resource could not be returned as the requestor is not aut
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i6_allOf_i1"></a>7.2. Property `EOAP Problem Details Registry > anyOf > item 6 > allOf > item 1`
 
@@ -999,7 +999,7 @@ Your client application should not repeat the request and should remove or repla
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/gone"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/gone"`
 
 #### <a name="anyOf_i6_allOf_i1_status"></a>7.2.2. Property `EOAP Problem Details Registry > anyOf > item 6 > allOf > item 1 > status`
 
@@ -1060,7 +1060,7 @@ Specific value: `"The requested resource is no longer available and is unlikely 
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i7_allOf_i1"></a>8.2. Property `EOAP Problem Details Registry > anyOf > item 7 > allOf > item 1`
 
@@ -1090,7 +1090,7 @@ Your client application may retry the request after the server's storage becomes
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/insufficient-storage"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/insufficient-storage"`
 
 #### <a name="anyOf_i7_allOf_i1_status"></a>8.2.2. Property `EOAP Problem Details Registry > anyOf > item 7 > allOf > item 1 > status`
 
@@ -1151,7 +1151,7 @@ Specific value: `"The server has insufficient storage to complete the requested 
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i8_allOf_i1"></a>9.2. Property `EOAP Problem Details Registry > anyOf > item 8 > allOf > item 1`
 
@@ -1181,7 +1181,7 @@ Your client issued a request that contained a malformed body property. Please re
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/invalid-body-property-format"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/invalid-body-property-format"`
 
 #### <a name="anyOf_i8_allOf_i1_status"></a>9.2.2. Property `EOAP Problem Details Registry > anyOf > item 8 > allOf > item 1 > status`
 
@@ -1242,7 +1242,7 @@ Specific value: `"The request body contains a malformed property."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i9_allOf_i1"></a>10.2. Property `EOAP Problem Details Registry > anyOf > item 9 > allOf > item 1`
 
@@ -1272,7 +1272,7 @@ Your client issued a request that contained an invalid body property value. Plea
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/invalid-body-property-value"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/invalid-body-property-value"`
 
 #### <a name="anyOf_i9_allOf_i1_status"></a>10.2.2. Property `EOAP Problem Details Registry > anyOf > item 9 > allOf > item 1 > status`
 
@@ -1333,7 +1333,7 @@ Specific value: `"The request body contains an invalid body property value."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i10_allOf_i1"></a>11.2. Property `EOAP Problem Details Registry > anyOf > item 10 > allOf > item 1`
 
@@ -1363,7 +1363,7 @@ Your client application issued a request to an API that contains invalid or malf
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/invalid-parameters"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/invalid-parameters"`
 
 #### <a name="anyOf_i10_allOf_i1_status"></a>11.2.2. Property `EOAP Problem Details Registry > anyOf > item 10 > allOf > item 1 > status`
 
@@ -1424,7 +1424,7 @@ Specific value: `"The request contained invalid, or malformed parameters (path o
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i11_allOf_i1"></a>12.2. Property `EOAP Problem Details Registry > anyOf > item 11 > allOf > item 1`
 
@@ -1454,7 +1454,7 @@ Your client issued a request that contained a malformed request header. Please r
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/invalid-request-header-format"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/invalid-request-header-format"`
 
 #### <a name="anyOf_i11_allOf_i1_status"></a>12.2.2. Property `EOAP Problem Details Registry > anyOf > item 11 > allOf > item 1 > status`
 
@@ -1515,7 +1515,7 @@ Specific value: `"The request contains a malformed request header parameter."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i12_allOf_i1"></a>13.2. Property `EOAP Problem Details Registry > anyOf > item 12 > allOf > item 1`
 
@@ -1545,7 +1545,7 @@ Your client issued a request that contained a malformed query or path parameter.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/invalid-request-parameter-format"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format"`
 
 #### <a name="anyOf_i12_allOf_i1_status"></a>13.2.2. Property `EOAP Problem Details Registry > anyOf > item 12 > allOf > item 1 > status`
 
@@ -1606,7 +1606,7 @@ Specific value: `"The request contains a malformed request query parameter."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i13_allOf_i1"></a>14.2. Property `EOAP Problem Details Registry > anyOf > item 13 > allOf > item 1`
 
@@ -1636,7 +1636,7 @@ Your client issued a request that contained an invalid query or path parameter v
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/invalid-request-parameter-value"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-value"`
 
 #### <a name="anyOf_i13_allOf_i1_status"></a>14.2.2. Property `EOAP Problem Details Registry > anyOf > item 13 > allOf > item 1 > status`
 
@@ -1697,7 +1697,7 @@ Specific value: `"The request body contains an invalid request parameter value."
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i14_allOf_i1"></a>15.2. Property `EOAP Problem Details Registry > anyOf > item 14 > allOf > item 1`
 
@@ -1727,7 +1727,7 @@ The license associated with your client/organization has been cancelled. Please 
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/license-cancelled"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/license-cancelled"`
 
 #### <a name="anyOf_i14_allOf_i1_status"></a>15.2.2. Property `EOAP Problem Details Registry > anyOf > item 14 > allOf > item 1 > status`
 
@@ -1788,7 +1788,7 @@ Specific value: `"The service is unavailable as the license associated with your
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i15_allOf_i1"></a>16.2. Property `EOAP Problem Details Registry > anyOf > item 15 > allOf > item 1`
 
@@ -1818,7 +1818,7 @@ The license associated with your client/organization has expired. Please contact
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/license-expired"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/license-expired"`
 
 #### <a name="anyOf_i15_allOf_i1_status"></a>16.2.2. Property `EOAP Problem Details Registry > anyOf > item 15 > allOf > item 1 > status`
 
@@ -1879,7 +1879,7 @@ Specific value: `"The service is unavailable as the license associated with your
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i16_allOf_i1"></a>17.2. Property `EOAP Problem Details Registry > anyOf > item 16 > allOf > item 1`
 
@@ -1909,7 +1909,7 @@ Your client issued a request that omitted an expected body property.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/missing-body-property"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/missing-body-property"`
 
 #### <a name="anyOf_i16_allOf_i1_status"></a>17.2.2. Property `EOAP Problem Details Registry > anyOf > item 16 > allOf > item 1 > status`
 
@@ -1970,7 +1970,7 @@ Specific value: `"The request is missing an expected body property."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i17_allOf_i1"></a>18.2. Property `EOAP Problem Details Registry > anyOf > item 17 > allOf > item 1`
 
@@ -2000,7 +2000,7 @@ Your client issued a request that omitted an expected request header.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/missing-request-header"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/missing-request-header"`
 
 #### <a name="anyOf_i17_allOf_i1_status"></a>18.2.2. Property `EOAP Problem Details Registry > anyOf > item 17 > allOf > item 1 > status`
 
@@ -2061,7 +2061,7 @@ Specific value: `"The request is missing an expected HTTP request header."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i18_allOf_i1"></a>19.2. Property `EOAP Problem Details Registry > anyOf > item 18 > allOf > item 1`
 
@@ -2091,7 +2091,7 @@ Your client issued a request that omitted an expected query or path par.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/missing-request-parameter"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/missing-request-parameter"`
 
 #### <a name="anyOf_i18_allOf_i1_status"></a>19.2.2. Property `EOAP Problem Details Registry > anyOf > item 18 > allOf > item 1 > status`
 
@@ -2152,7 +2152,7 @@ Specific value: `"The request is missing an expected query or path parameter."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i19_allOf_i1"></a>20.2. Property `EOAP Problem Details Registry > anyOf > item 19 > allOf > item 1`
 
@@ -2182,7 +2182,7 @@ Your client application should use one of the methods listed in the response's A
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/method-not-allowed"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/method-not-allowed"`
 
 #### <a name="anyOf_i19_allOf_i1_status"></a>20.2.2. Property `EOAP Problem Details Registry > anyOf > item 19 > allOf > item 1 > status`
 
@@ -2243,7 +2243,7 @@ Specific value: `"The request method is not supported by the target resource."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i20_allOf_i1"></a>21.2. Property `EOAP Problem Details Registry > anyOf > item 20 > allOf > item 1`
 
@@ -2273,7 +2273,7 @@ Your client application should request one of the representations supported by t
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/not-acceptable"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/not-acceptable"`
 
 #### <a name="anyOf_i20_allOf_i1_status"></a>21.2.2. Property `EOAP Problem Details Registry > anyOf > item 20 > allOf > item 1 > status`
 
@@ -2334,7 +2334,7 @@ Specific value: `"No acceptable representation is available for the requested re
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i21_allOf_i1"></a>22.2. Property `EOAP Problem Details Registry > anyOf > item 21 > allOf > item 1`
 
@@ -2364,7 +2364,7 @@ Your client application tried to access a resource that does not exist (or could
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/not-found"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/not-found"`
 
 #### <a name="anyOf_i21_allOf_i1_status"></a>22.2.2. Property `EOAP Problem Details Registry > anyOf > item 21 > allOf > item 1 > status`
 
@@ -2425,7 +2425,7 @@ Specific value: `"The requested resource was not found."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i22_allOf_i1"></a>23.2. Property `EOAP Problem Details Registry > anyOf > item 22 > allOf > item 1`
 
@@ -2455,7 +2455,7 @@ Your client application may retry after the functionality is implemented.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/not-implemented"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/not-implemented"`
 
 #### <a name="anyOf_i22_allOf_i1_status"></a>23.2.2. Property `EOAP Problem Details Registry > anyOf > item 22 > allOf > item 1 > status`
 
@@ -2516,7 +2516,7 @@ Specific value: `"The server does not support the functionality required to fulf
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i23_allOf_i1"></a>24.2. Property `EOAP Problem Details Registry > anyOf > item 23 > allOf > item 1`
 
@@ -2546,7 +2546,7 @@ Your client application may repeat the request using a new connection.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/request-timeout"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/request-timeout"`
 
 #### <a name="anyOf_i23_allOf_i1_status"></a>24.2.2. Property `EOAP Problem Details Registry > anyOf > item 23 > allOf > item 1 > status`
 
@@ -2607,7 +2607,7 @@ Specific value: `"The server timed out while waiting to receive the request."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i24_allOf_i1"></a>25.2. Property `EOAP Problem Details Registry > anyOf > item 24 > allOf > item 1`
 
@@ -2637,7 +2637,7 @@ Your client application did everything correct. Unfortunately our API encountere
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/server-error"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/server-error"`
 
 #### <a name="anyOf_i24_allOf_i1_status"></a>25.2.2. Property `EOAP Problem Details Registry > anyOf > item 24 > allOf > item 1 > status`
 
@@ -2698,7 +2698,7 @@ Specific value: `"The server encountered an unexpected error."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i25_allOf_i1"></a>26.2. Property `EOAP Problem Details Registry > anyOf > item 25 > allOf > item 1`
 
@@ -2728,7 +2728,7 @@ Your client application did everything correct. Unfortunately our API is current
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/service-unavailable"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/service-unavailable"`
 
 #### <a name="anyOf_i25_allOf_i1_status"></a>26.2.2. Property `EOAP Problem Details Registry > anyOf > item 25 > allOf > item 1 > status`
 
@@ -2789,7 +2789,7 @@ Specific value: `"The service is currently unavailable."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i26_allOf_i1"></a>27.2. Property `EOAP Problem Details Registry > anyOf > item 26 > allOf > item 1`
 
@@ -2819,7 +2819,7 @@ Your client application issued a requested to a protected resource without suppl
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/unauthorized"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/unauthorized"`
 
 #### <a name="anyOf_i26_allOf_i1_status"></a>27.2.2. Property `EOAP Problem Details Registry > anyOf > item 26 > allOf > item 1 > status`
 
@@ -2880,7 +2880,7 @@ Specific value: `"Access token not set or invalid, and the requested resource co
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i27_allOf_i1"></a>28.2. Property `EOAP Problem Details Registry > anyOf > item 27 > allOf > item 1`
 
@@ -2910,7 +2910,7 @@ Your client application cannot access the resource while the legal restriction a
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/unavailable-for-legal-reasons"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/unavailable-for-legal-reasons"`
 
 #### <a name="anyOf_i27_allOf_i1_status"></a>28.2.2. Property `EOAP Problem Details Registry > anyOf > item 27 > allOf > item 1 > status`
 
@@ -2971,7 +2971,7 @@ Specific value: `"The requested resource is unavailable due to legal reasons."`
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i28_allOf_i1"></a>29.2. Property `EOAP Problem Details Registry > anyOf > item 28 > allOf > item 1`
 
@@ -3001,7 +3001,7 @@ Your client application should modify the request before resubmitting it.
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/unprocessable-content"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/unprocessable-content"`
 
 #### <a name="anyOf_i28_allOf_i1_status"></a>29.2.2. Property `EOAP Problem Details Registry > anyOf > item 28 > allOf > item 1 > status`
 
@@ -3062,7 +3062,7 @@ Specific value: `"The request content is syntactically correct but cannot be pro
 
 **Description:** The `ProblemDetails` object provides detailed information about an errors that occurred during an API call execution. This problem object conforms to the [RFC9457](https://www.rfc-editor.org/info/rfc9457) (formerly [RFC7807](https://tools.ietf.org/html/rfc7807)).
 The object is extended with the following properties: - `code` - a string identifier to aid the provider team better understand the error - `errors` - and array of errors providing contextual information on the root cause of the problem
-The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://eoap.github.io/problems-registry/).
+The `ProblemDetails` referenced by this domain utilize the [EOAP Problems Registry](https://terradue.github.io/http-apis-problems-detail/).
 
 ### <a name="anyOf_i29_allOf_i1"></a>30.2. Property `EOAP Problem Details Registry > anyOf > item 29 > allOf > item 1`
 
@@ -3093,7 +3093,7 @@ Please review your request to determine if you can remain within appropriate bus
 
 **Description:** A URI reference that identifies the problem type.
 
-Specific value: `"https://eoap.github.io/problems-registry/validation-error"`
+Specific value: `"https://terradue.github.io/http-apis-problems-detail/validation-error"`
 
 #### <a name="anyOf_i29_allOf_i1_status"></a>30.2.2. Property `EOAP Problem Details Registry > anyOf > item 29 > allOf > item 1 > status`
 

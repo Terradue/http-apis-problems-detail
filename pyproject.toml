@@ -17,9 +17,9 @@ requires = ["hatchling>=1.32.4"]
 build-backend = "hatchling.build"
 
 [project]
-name = "eoap-problems-registry"
+name = "http-apis-problems-detail"
 dynamic = ["version"]
-description = 'EOAP Problems Registry'
+description = "Problem Details for HTTP APIs"
 
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,8 +28,8 @@ license-files = ["LICENSE"]
 keywords = [
   "RFC 9457",
   "RFC 7807",
-  "EOAP",
-  "Earth Observation"
+  "HTTP APIs",
+  "Problem Details"
 ]
 authors = [
   { name = "Fabrice Brito", email = "info@terradue.com" },
@@ -47,7 +47,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-  "pydantic>=2.13.5",
+  "pydantic>2,<3",
 ]
 
 # ---------------------------------------------------------------------------
@@ -55,17 +55,17 @@ dependencies = [
 # ---------------------------------------------------------------------------
 
 [project.urls]
-Documentation = "https://eoap.github.io/problems-registry/"
-Issues = "https://github.com/eoap/problems-registry/issues"
-Source = "https://github.com/eoap/problems-registry"
-Changelog = "https://github.com/eoap/problems-registry/blob/main/CHANGELOG.md"
+Documentation = "https://terradue.github.io/http-apis-problems-detail/"
+Issues = "https://github.com/terradue/http-apis-problems-detail/issues"
+Source = "https://github.com/terradue/http-apis-problems-detail"
+Changelog = "https://github.com/terradue/http-apis-problems-detail/blob/main/CHANGELOG.md"
 
 # ---------------------------------------------------------------------------
 # Versioning and packaging
 # ---------------------------------------------------------------------------
 
 [tool.hatch.version]
-path = "src/eoap_problems_registry/__about__.py"
+path = "src/http_apis_problems_detail/__about__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -80,24 +80,24 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/eoap_problems_registry"]
+packages = ["src/http_apis_problems_detail"]
 
 # ---------------------------------------------------------------------------
 # Coverage
 # ---------------------------------------------------------------------------
 
 [tool.coverage.run]
-source_pkgs = ["eoap_problems_registry", "tests"]
+source_pkgs = ["http_apis_problems_detail", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/eoap_problems_registry/__about__.py",
+  "src/http_apis_problems_detail/__about__.py",
 ]
 
 [tool.coverage.paths]
-eoap_problems_registry = [
-  "src/eoap_problems_registry",
-  "*/{{ project_slug }}/src/eoap_problems_registry"
+http_apis_problems_detail = [
+  "src/http_apis_problems_detail",
+  "*/{{ project_slug }}/src/http_apis_problems_detail"
 ]
 
 [tool.coverage.report]
@@ -126,7 +126,7 @@ dependencies = [
 [tool.hatch.envs.test.scripts]
 test = "pytest {args:tests}"
 testv = "pytest --verbose {args:tests}"
-test-cov = "pytest --cov=eoap_problems_registry --cov-report=term-missing --cov-report=xml:coverage.xml {args:tests}"
+test-cov = "pytest --cov=http_apis_problems_detail --cov-report=term-missing --cov-report=xml:coverage.xml {args:tests}"
 test-show-setup = "pytest --setup-show {args:tests}"
 
 [[tool.hatch.envs.test.matrix]]
@@ -219,7 +219,7 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 # OpenAPI-generated signatures and HTTP status literals mirror the API schema.
-"src/eoap_problems_registry/**/*.py" = ["PLR0913", "PLR2004"]
+"src/http_apis_problems_detail/**/*.py" = ["PLR0913", "PLR2004"]
 
 [tool.ruff.lint.mccabe]
 # Flag errors (C901) whenever complexity exceeds 10 (default is 10)
@@ -252,7 +252,7 @@ ignore_missing_imports = false
 
 # Files checked by default.
 files = [
-  "src/eoap_problems_registry",
+  "src/http_apis_problems_detail",
   "tests"
 ]
 

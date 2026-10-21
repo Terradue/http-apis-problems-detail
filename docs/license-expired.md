@@ -6,7 +6,7 @@ The license associated with your client/organization has expired. Please contact
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/license-expired|License Expired|503||
+|https://terradue.github.io/http-apis-problems-detail/license-expired|License Expired|503||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ The license associated with your client/organization has expired. Please contact
 **Example of an `license-expired` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/license-expired",
+    "type": "https://terradue.github.io/http-apis-problems-detail/license-expired",
     "title": "License Expired",
     "detail": "The service is unavailable as the license associated with your client or organization has expired. Please contact your SmartBear account manager or representative",
     "status": 503

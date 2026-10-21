@@ -6,7 +6,7 @@ Your client issued a request that contained a malformed query or path parameter.
 
 | Type URI | Title | Recommended HTTP Status Code | Reference |
 |----------|-------|------------------------------|-----------|
-|https://eoap.github.io/problems-registry/invalid-request-parameter-format|Invalid Request Parameter Format|400||
+|https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format|Invalid Request Parameter Format|400||
 
 > **Note** A problem is generally **not** meant to be used for end-user input validation, but for client developer convenience. 
 
@@ -14,7 +14,7 @@ Your client issued a request that contained a malformed query or path parameter.
 **Example of an `invalid-request-parameter-format` problem details:**
 ```json
 {
-    "type": "https://eoap.github.io/problems-registry/invalid-request-parameter-format",
+    "type": "https://terradue.github.io/http-apis-problems-detail/invalid-request-parameter-format",
     "title": "Invalid Request Parameter Format",
     "detail": "The request contains a malformed query parameter.",
     "status": 400,
